@@ -5,4 +5,5 @@
     <string name="passwd">Contraseña</string>
     <string name="email">Correo electrónico</string>
     <string name="email2">Email</string>
+    <string name="back">Atrás</string>
 </resources>
