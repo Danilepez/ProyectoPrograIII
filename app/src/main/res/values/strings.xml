@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">AAA</string>
+    <string name="app_name">Fridge Fresh</string>
+    <string name="register">Registrarse</string>
+    <string name="login">Iniciar Sesión</string>
 </resources>
