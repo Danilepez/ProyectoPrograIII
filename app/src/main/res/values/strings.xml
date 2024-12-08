@@ -2,4 +2,7 @@
     <string name="app_name">Fridge Fresh</string>
     <string name="register">Registrarse</string>
     <string name="login">Iniciar Sesión</string>
+    <string name="passwd">Contraseña</string>
+    <string name="email">Correo electrónico</string>
+    <string name="email2">Email</string>
 </resources>

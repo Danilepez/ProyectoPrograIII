@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".LoginActivity">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/login_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="200dp" />
+
+    <!-- Campo de correo electrónico -->
+    <TextView
+        android:id="@+id/email_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email2"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="@id/et_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/et_email"/>
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintTop_toBottomOf="@id/login_title"
+        app:layout_constraintStart_toEndOf="@id/email_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop= "60dp"
+        android:layout_marginHorizontal="32dp" />
+
+    <!-- Campo de contraseña -->
+    <TextView
+        android:id="@+id/passwd_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/passwd"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="@id/et_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/et_email"/>
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/passwd"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@id/et_email"
+        app:layout_constraintStart_toEndOf="@id/passwd_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="32dp" />
+
+    <!-- Botón Iniciar Sesión -->
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:backgroundTint="#307AC5"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/et_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="85dp"
+        android:layout_marginHorizontal="32dp" />
+
+    <!-- Botón de flecha hacia atrás -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="96dp"
+        android:layout_height="73dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="Atrás"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/flecha_atras"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

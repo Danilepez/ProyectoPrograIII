@@ -16,15 +16,15 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        // Acción para el botón "Iniciar Sesión"
+        //Boton Iniciar Sesión
         binding.btnLogin.setOnClickListener {
-            val intentLogin = Intent(this, MainActivity::class.java)
+            val intentLogin = Intent(this, LoginActivity::class.java)
             startActivity(intentLogin)
         }
 
-        // Acción para el botón "Registrarse"
+        //Boton Registrarse
         binding.btnRegister.setOnClickListener {
-            val intentRegister = Intent(this, MainActivity::class.java)
+            val intentRegister = Intent(this, RegisterActivity::class.java)
             startActivity(intentRegister)
         }
     }
