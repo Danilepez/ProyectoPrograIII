@@ -22,23 +22,22 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener {
-            //loginUsuario()
+            loginUsuario()
         }
-
-        fun loginUsuario(){
-            val email = binding.etEmail.text.toString()
-            val password = binding.etPassword.text.toString()
-            auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this){ respuesta ->
-                if(respuesta.isSuccessful){
-                    Toast.makeText(this, "Iniciando sesión...", Toast.LENGTH_SHORT).show()
-                    //val intent = Intent(this, HomeActivity::class.java)
-                    //startActivity(intent)
-                    finish()
-                } else{
-                    if (email.isEmpty()) binding.etEmail.error = "Correo electrónico requerido"
-                    if (password.isEmpty()) binding.etPassword.error = "Contraseña requerida"
-                    Toast.makeText(this, "Error en la autenticación", Toast.LENGTH_SHORT).show()
-                }
+    }
+    fun loginUsuario(){
+        val email = binding.etEmail.text.toString()
+        val password = binding.etPassword.text.toString()
+        auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this){ respuesta ->
+            if(respuesta.isSuccessful){
+                Toast.makeText(this, "Iniciando sesión...", Toast.LENGTH_SHORT).show()
+                //val intent = Intent(this, HomeActivity::class.java)
+                //startActivity(intent)
+                finish()
+            } else{
+                if (email.isEmpty()) binding.etEmail.error = "Correo electrónico requerido"
+                if (password.isEmpty()) binding.etPassword.error = "Contraseña requerida"
+                Toast.makeText(this, "Error en la autenticación", Toast.LENGTH_SHORT).show()
             }
         }
     }
