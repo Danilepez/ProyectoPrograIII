@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aaa.dataclasses.Producto
 import com.example.aaa.databinding.ItemProductoBinding
+import com.example.aaa.storage.JsonUtil
 import com.example.aaa.storage.SharedPreferencesUtil
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -18,7 +19,7 @@ class RecyclerContenedorAdapter :
 
     init{
         context?.let {
-            listaDatos.addAll(SharedPreferencesUtil.loadFromSharedPreferences(it)) // Cargar lista de productos desde SharedPreferences
+            listaDatos.addAll(JsonUtil.loadFromJson(it))
         }
     }
 
@@ -51,22 +52,21 @@ class RecyclerContenedorAdapter :
         }
     }
 
-    // Método para agregar datos a la lista y actualizar SharedPreferences
+    // Método para agregar datos a la lista y actualizar el archivo JSON
     fun addDataToList(list: List<Producto>) {
         listaDatos.clear()
         listaDatos.addAll(list)
         context?.let {
-            SharedPreferencesUtil.saveToSharedPreferences(it, listaDatos)  // Guardar lista de productos en SharedPreferences
+            JsonUtil.saveToJson(it, listaDatos)  // Guardar lista de productos en el archivo JSON
         }
-        notifyDataSetChanged()  // Actualiza la vista para reflejar los nuevos datos
     }
 
-    // Método para agregar un solo producto a la lista y guardar en SharedPreferences
+    // Método para agregar un solo producto a la lista y guardar en el archivo JSON
     fun addProduct(product: Producto) {
         listaDatos.add(product)
         context?.let {
-            SharedPreferencesUtil.saveToSharedPreferences(it, listaDatos)  // Guardar lista de productos en SharedPreferences
+            JsonUtil.saveToJson(it, listaDatos)  // Guardar lista de productos en el archivo JSON
         }
-        notifyDataSetChanged()
+        notifyDataSetChanged()  // Actualiza la vista para reflejar el nuevo producto
     }
 }
