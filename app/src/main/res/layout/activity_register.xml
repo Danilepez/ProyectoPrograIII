@@ -8,7 +8,6 @@
     android:background="@drawable/images"
     tools:context=".RegisterActivity">
 
-    <!-- Botón de flecha hacia atrás -->
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="96dp"
@@ -20,6 +19,7 @@
         android:src="@drawable/flecha_atras"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <!-- Título -->
     <TextView
