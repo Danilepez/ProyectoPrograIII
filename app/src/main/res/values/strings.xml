@@ -17,4 +17,6 @@
     <string name="venc">Vencen pronto</string>
     <string name="logout">Cerrar sesión</string>
     <string name="siguiente">Siguiente</string>
+    <string name="contenedor_1">Contenedor 1</string>
+    <string name="producto_1">Producto 1</string>
 </resources>
