@@ -13,12 +13,6 @@
         android:theme="@style/Theme.AAA"
         tools:targetApi="31">
         <activity
-            android:name=".ContenedorActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CrearContenedorActivity"
-            android:exported="false" />
-        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
