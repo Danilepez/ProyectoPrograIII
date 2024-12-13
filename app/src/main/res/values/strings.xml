@@ -22,4 +22,8 @@
     <string name="vista_detallada">Vista Detallada</string>
     <string name="vista_compacta">Vista Compacta</string>
     <string name="modificar">Modificar</string>
+    <string name="product_list">Lista: %1$s</string>
+    <string name="product_expiration_date">Fecha de vencimiento: %1$s</string>
+    <string name="product_quantity">Cantidad: %1$d</string>
+    <string name="product_status">Estado: %1$s</string>
 </resources>
