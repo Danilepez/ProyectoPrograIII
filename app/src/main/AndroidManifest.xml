@@ -19,6 +19,30 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
+            android:name=".Combinar2"
+            android:exported="false" />
+        <activity
+            android:name=".ContenedorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CrearContenedorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditarListas"
+            android:exported="false" />
+        <activity
+            android:name=".ListaEjemplo"
+            android:exported="false" />
+        <activity
+            android:name=".VencenPronto"
+            android:exported="false" />
+        <activity
+            android:name=".PantallaPrincipal"
+            android:exported="false" />
+        <activity
+            android:name=".VistaDetallada"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
