@@ -119,6 +119,4 @@
             android:layout_marginTop="20dp"
             style="@style/Ese"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
