@@ -2,9 +2,9 @@
     <string name="app_name">Fridge Fresh</string>
     <string name="register">Registrarse</string>
     <string name="login">Iniciar Sesión</string>
-    <string name="passwd">Contraseña</string>
+    <string name="passwd">Contraseña:</string>
     <string name="email">Correo electrónico</string>
-    <string name="email2">Email</string>
+    <string name="email2">Email:</string>
     <string name="back">Atrás</string>
     <string name="texto_contenedor">Hola! "Usuario", Primero añada los productos que tiene en su almacén</string>
     <string name="nombre_contenedor">Nombre del contenedor:</string>
