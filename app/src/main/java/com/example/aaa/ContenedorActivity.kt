@@ -10,7 +10,7 @@ import com.example.aaa.dataclasses.Producto
 class ContenedorActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityContenedorBinding
-    private lateinit var recyclerContenedorAdapter: RecyclerContenedorAdapter
+    private val recyclerContenedorAdapter by lazy {RecyclerContenedorAdapter()}
     private lateinit var productList: List<Producto>
     private var showDetails: Boolean = false // Estado global de visibilidad
 
@@ -19,8 +19,6 @@ class ContenedorActivity : AppCompatActivity() {
         binding = ActivityContenedorBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Inicializar RecyclerView
-        recyclerContenedorAdapter = RecyclerContenedorAdapter()
         binding.rvProducts.apply {
             layoutManager = LinearLayoutManager(this@ContenedorActivity)
             adapter = recyclerContenedorAdapter
