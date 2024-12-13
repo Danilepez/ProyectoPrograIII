@@ -26,4 +26,8 @@
     <string name="product_expiration_date">Fecha de vencimiento: %1$s</string>
     <string name="product_quantity">Cantidad: %1$d</string>
     <string name="product_status">Estado: %1$s</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="nombre">Nombre:</string>
+    <string name="correo">Correo:</string>
+    <string name="nueva_password">Nueva password:</string>
 </resources>
