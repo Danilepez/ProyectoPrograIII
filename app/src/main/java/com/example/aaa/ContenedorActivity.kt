@@ -19,7 +19,7 @@ class ContenedorActivity : AppCompatActivity() {
         binding = ActivityContenedorBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Inicializar RecyclerView
+        // Inicializar recycle
         recyclerContenedorAdapter = RecyclerContenedorAdapter()
         binding.rvProducts.apply {
             layoutManager = LinearLayoutManager(this@ContenedorActivity)
