@@ -30,4 +30,8 @@
     <string name="nombre">Nombre:</string>
     <string name="correo">Correo:</string>
     <string name="nueva_password">Nueva password:</string>
+    <string name="producto">Producto</string>
+    <string name="fecha">Fecha</string>
+    <string name="vencidos">Vencidos</string>
+    <string name="vencen_pronto">Vencen pronto</string>
 </resources>
