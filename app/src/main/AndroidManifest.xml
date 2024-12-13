@@ -13,24 +13,6 @@
         android:theme="@style/Theme.AAA"
         tools:targetApi="31">
         <activity
-            android:name=".Combinar2"
-            android:exported="false" />
-        <activity
-            android:name=".EditarListas"
-            android:exported="false" />
-        <activity
-            android:name=".ListaEjemplo"
-            android:exported="false" />
-        <activity
-            android:name=".VencenPronto"
-            android:exported="false" />
-        <activity
-            android:name=".VistaDetallada"
-            android:exported="false" />
-        <activity
-            android:name=".PantallaPrincipal"
-            android:exported="false" />
-        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
