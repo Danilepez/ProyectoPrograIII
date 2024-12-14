@@ -1,4 +1,4 @@
-package com.example.aaa.adapters.Recycler.Contenedor
+package com.example.aaa.adapters.Recycler.App
 
 import android.content.Context
 import android.view.LayoutInflater

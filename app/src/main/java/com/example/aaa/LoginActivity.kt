@@ -22,23 +22,53 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        // Verificar si las credenciales están almacenadas
+        val sharedPreferences = getSharedPreferences("USER_PREF", MODE_PRIVATE)
+        val savedEmail = sharedPreferences.getString("EMAIL", null)
+        val savedPassword = sharedPreferences.getString("PASSWORD", null)
+
+        if (!savedEmail.isNullOrEmpty() && !savedPassword.isNullOrEmpty()) {
+            // Si hay credenciales guardadas, iniciar sesión automáticamente
+            loginUsuario(savedEmail, savedPassword, rememberMe = false)
+        }
+
         binding.btnLogin.setOnClickListener {
-            loginUsuario()
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
+            val rememberMe = binding.cbRememberMe.isChecked
+            loginUsuario(email, password, rememberMe)
         }
     }
-    fun loginUsuario(){
-        val email = binding.etEmail.text.toString()
-        val password = binding.etPassword.text.toString()
+    fun loginUsuario(email: String, password: String, rememberMe: Boolean){
+        if (email.isEmpty()) {
+            binding.etEmail.error = "Correo electrónico requerido"
+            return
+        }
+        if (password.isEmpty()) {
+            binding.passwdTitle.error = "Contraseña requerida"
+            return
+        }
         auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this){ respuesta ->
+
             if(respuesta.isSuccessful){
-                Toast.makeText(this, "Iniciando sesión...", Toast.LENGTH_SHORT).show()
-                //val intent = Intent(this, HomeActivity::class.java)
-                //startActivity(intent)
-                finish()
+                val user = auth.currentUser
+                if(rememberMe){
+                    val sharedPreferences = getSharedPreferences("USER_PREF", MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putString("email", email)
+                    editor.putString("password", password)
+                    editor.apply()
+                }
+
+                Toast.makeText(this, "Inicio de sesión: ${user?.email}", Toast.LENGTH_SHORT).show()
+
+
+                val intent = Intent(this, PantallaPrincipal::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
             } else{
-                if (email.isEmpty()) binding.etEmail.error = "Correo electrónico requerido"
-                if (password.isEmpty()) binding.etPassword.error = "Contraseña requerida"
-                Toast.makeText(this, "Error en la autenticación", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Error en el inicio de sesión: ${respuesta.exception?.message}", Toast.LENGTH_SHORT).show()
             }
         }
     }
