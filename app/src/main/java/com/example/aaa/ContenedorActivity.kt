@@ -3,7 +3,7 @@ package com.example.aaa
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.aaa.adapters.Recycler.App.RecyclerContenedorAdapter
+import com.example.aaa.adapters.Recycler.Contenedor.RecyclerContenedorAdapter
 import com.example.aaa.databinding.ActivityContenedorBinding
 import com.example.aaa.dataclasses.Producto
 

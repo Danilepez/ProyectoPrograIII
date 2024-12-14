@@ -36,5 +36,11 @@
     <string name="vencen_pronto">Vencen pronto</string>
     <string name="lista_1">Lista 1</string>
     <string name="combinar_con">Combinar con</string>
+    <string name="productos_add">Productos añadidos</string>
+    <string name="añadir">+</string>
+    <string name="eliminar">-</string>
+    <string name="combinar">Combinar</string>
+    <string name="eliminar_texto">Eliminar</string>
+    <string name="chequear">Chequear</string>
     <string name="recuerdame">Recuerdame</string>
 </resources>
