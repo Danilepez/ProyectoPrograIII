@@ -10,7 +10,7 @@ import com.example.aaa.dataclasses.Producto
 class ContenedorActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityContenedorBinding
-    private val recyclerContenedorAdapter by lazy { RecyclerContenedorAdapter() }
+    private val recyclerContenedorAdapter by lazy {RecyclerContenedorAdapter()}
     private lateinit var productList: List<Producto>
     private var showDetails: Boolean = false // Estado global de visibilidad
 
