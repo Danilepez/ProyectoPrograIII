@@ -64,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Inicio de sesión: ${user?.email}", Toast.LENGTH_SHORT).show()
 
 
-                val intent = Intent(this, PantallaPrincipal::class.java)
+                val intent = Intent(this, PantallaPrincipalActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             } else{
