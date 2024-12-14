@@ -12,7 +12,7 @@
         android:id="@+id/btnBack"
         android:layout_width="96dp"
         android:layout_height="73dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/back"
         android:scaleType="centerCrop"
         android:layout_marginTop="15dp"
@@ -26,7 +26,7 @@
         android:id="@+id/regis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrarse"
+        android:text="@string/registrarse"
         android:textSize="30sp"
         android:textStyle="bold"
         android:layout_marginTop="35dp"
@@ -35,40 +35,106 @@
         app:layout_constraintEnd_toEndOf="parent"
         style="@style/Ese"/>
 
+    <!-- Campo de nombre -->
+
+    <TextView
+        android:id="@+id/tv_nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/nombre"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nombreed"
+        app:layout_constraintTop_toTopOf="@id/nombreed" />
+
     <EditText
         android:id="@+id/nombreed"
-        android:layout_width="300dp"
+        android:layout_width="250dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="150dp"
-        android:background="@drawable/FondoEditText"
+        android:paddingStart="20dp"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/fondo_edit_text"
         android:textColorHint="#FFFFFF"
-        android:hint="Nombre:"
+        android:hint="@string/nombre"
+        android:autofillHints="name"
+        android:layout_marginEnd="20dp"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Campo de correo electrónico -->
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email2"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toTopOf="@id/correoed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/correoed"/>
+
     <EditText
         android:id="@+id/correoed"
-        android:layout_width="300dp"
+        android:layout_width="250dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="100dp"
-        android:background="@drawable/FondoEditText"
+        android:paddingStart="20dp"
+        android:background="@drawable/fondo_edit_text"
         android:textColorHint="#FAFAFA"
-        android:hint="Correo:"
+        android:autofillHints="emailAddress"
+        android:inputType="textEmailAddress"
+        android:hint="@string/correo"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nombreed"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/nombreed"/>
+
+    <!-- Campo de contraseña -->
+    <TextView
+        android:id="@+id/tv_passwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/passwd"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toTopOf="@id/passwded"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/passwded"/>
 
     <EditText
         android:id="@+id/passwded"
-        android:layout_width="300dp"
+        android:layout_width="250dp"
         android:layout_height="80dp"
-        android:layout_marginTop="60dp"
-        android:hint="Nueva password:"
-        android:background="@drawable/FondoEditText"
+        android:layout_marginTop="80dp"
+        android:paddingStart="20dp"
+        android:inputType="textPassword"
+        android:autofillHints="password"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="100dp"
+        android:hint="@string/nueva_password"
+        android:background="@drawable/fondo_edit_text"
         android:textColorHint="#FFFDFD"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/correoed"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/correoed" />
+
+
+    <Button
+        android:id="@+id/btn_registrarse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/passwded"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="100dp"
+        android:text="@string/registrarse"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,11 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.aaa.dataclasses.Producto
 import com.example.aaa.databinding.ItemProductoBinding
+import com.example.aaa.dataclasses.Producto
 
-class RecyclerContenedorAdapter :
-    RecyclerView.Adapter<RecyclerContenedorAdapter.ProductoViewHolder>() {
+class RecyclerModificarContenedorAdapter :
+    RecyclerView.Adapter<RecyclerModificarContenedorAdapter.ProductoViewHolder>() {
 
     private val listaDatos = mutableListOf<Producto>()
     private var context: Context? = null
@@ -28,22 +28,24 @@ class RecyclerContenedorAdapter :
     }
 
     override fun onBindViewHolder(holder: ProductoViewHolder, position: Int) {
-        holder.binding(listaDatos[position])
+        holder.bind(listaDatos[position]) // Vincula cada producto al ViewHolder
     }
 
     override fun getItemCount(): Int = listaDatos.size
 
     inner class ProductoViewHolder(private val binding: ItemProductoBinding) :
-        RecyclerView.ViewHolder(binding.root)  {
-        fun binding(data: Producto) {
+        RecyclerView.ViewHolder(binding.root) {
 
-            binding.tvProductName.text = data.nombre
-
+        fun bind(data: Producto) {
+            // Asignar solo el nombre del producto al TextView
+            binding.tvNombre.text = data.nombre
         }
     }
 
+    // Agrega una lista de productos al adaptador
     fun addDataToList(list: List<Producto>) {
         listaDatos.clear()
         listaDatos.addAll(list)
+        notifyDataSetChanged()
     }
 }

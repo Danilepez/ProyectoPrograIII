@@ -1,20 +1,52 @@
 package com.example.aaa
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.aaa.adapters.Recycler.App.RecyclerContenedorAdapter
+import com.example.aaa.databinding.ActivityContenedorBinding
+import com.example.aaa.dataclasses.Producto
 
 class ContenedorActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityContenedorBinding
+    private val recyclerContenedorAdapter by lazy {RecyclerContenedorAdapter()}
+    private lateinit var productList: List<Producto>
+    private var showDetails: Boolean = false // Estado global de visibilidad
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_contenedor)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityContenedorBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.rvProducts.apply {
+            layoutManager = LinearLayoutManager(this@ContenedorActivity)
+            adapter = recyclerContenedorAdapter
+        }
+
+        // Crear una lista de productos
+        productList = listOf(
+            Producto("Producto 1", "Lista A", "2024-12-01","Disponible", 10),
+            Producto("Producto 2", "Lista B", "2025-01-15","Agotado", 20),
+            Producto("Producto 3", "Lista C", "2024-11-20", "Disponible", 5)
+        )
+
+        // Agregar los productos al adaptador
+        recyclerContenedorAdapter.addDataToList(productList)
+
+        // Configurar botones
+        binding.btnCompactView.setOnClickListener {
+            if (showDetails) {
+                showDetails = false
+                recyclerContenedorAdapter.toggleDetails(false)
+            }
+        }
+
+        binding.btnDetailedView.setOnClickListener {
+            if (!showDetails) {
+                showDetails = true
+                recyclerContenedorAdapter.toggleDetails(true)
+            }
         }
     }
 }

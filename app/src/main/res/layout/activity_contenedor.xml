@@ -12,7 +12,7 @@
     <!-- Botón de flecha hacia atrás -->
     <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="96dp"
+        android:layout_width="73dp"
         android:layout_height="73dp"
         android:backgroundTint="@color/white"
         android:contentDescription="@string/back"
@@ -67,7 +67,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btnDetailedView"
-            app:layout_constraintHorizontalWeight="1"
             android:layout_marginEnd="8dp" />
 
         <!-- Botón "Vista Detallada" -->
@@ -79,7 +78,6 @@
             app:layout_constraintStart_toEndOf="@id/btnCompactView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontalWeight="1"
             android:layout_marginStart="8dp" />
 
         <!-- Botón "Modificar" -->
