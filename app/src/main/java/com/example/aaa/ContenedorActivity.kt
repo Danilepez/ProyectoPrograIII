@@ -3,14 +3,14 @@ package com.example.aaa
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.aaa.adapters.Recycler.Contenedor.RecyclerContenedorAdapter
+import com.example.aaa.adapters.Recycler.App.RecyclerContenedorAdapter
 import com.example.aaa.databinding.ActivityContenedorBinding
 import com.example.aaa.dataclasses.Producto
 
 class ContenedorActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityContenedorBinding
-    private val recyclerContenedorAdapter by lazy {RecyclerContenedorAdapter()}
+    private val recyclerContenedorAdapter by lazy { RecyclerContenedorAdapter() }
     private lateinit var productList: List<Producto>
     private var showDetails: Boolean = false // Estado global de visibilidad
 

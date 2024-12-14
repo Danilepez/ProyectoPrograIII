@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AAA"
         tools:targetApi="31">
         <activity
+            android:name=".CombinarActivity2"
+            android:exported="false" />
+        <activity
             android:name=".EliminarProductosContenedorActivity"
             android:exported="false" />
         <activity
@@ -29,9 +32,6 @@
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CombinarActivity2"
             android:exported="false" />
         <activity
             android:name=".ContenedorActivity"
