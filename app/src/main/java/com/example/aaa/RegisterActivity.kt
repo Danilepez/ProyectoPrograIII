@@ -41,7 +41,7 @@ class RegisterActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // registro exitoso
-                    val intent = Intent(this, PantallaPrincipal::class.java)
+                    val intent = Intent(this, PantallaPrincipalActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     val user = auth.currentUser
                     Toast.makeText(this, "Usuario registrado: ${user?.email}", Toast.LENGTH_SHORT).show()
