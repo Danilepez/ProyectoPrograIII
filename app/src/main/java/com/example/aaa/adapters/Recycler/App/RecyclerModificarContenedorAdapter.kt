@@ -1,10 +1,10 @@
-package com.example.aaa.adapters.Recycler.Contenedor
+package com.example.aaa.adapters.Recycler.App
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.aaa.databinding.ItemProductoBinding
+import com.example.aaa.databinding.ItemProductoModificarBinding
 import com.example.aaa.dataclasses.Producto
 
 class RecyclerModificarContenedorAdapter :
@@ -19,7 +19,7 @@ class RecyclerModificarContenedorAdapter :
     ): ProductoViewHolder {
         context = parent.context
         return ProductoViewHolder(
-            ItemProductoBinding.inflate(
+            ItemProductoModificarBinding.inflate(
                 LayoutInflater.from(context),
                 parent,
                 false
@@ -33,7 +33,7 @@ class RecyclerModificarContenedorAdapter :
 
     override fun getItemCount(): Int = listaDatos.size
 
-    inner class ProductoViewHolder(private val binding: ItemProductoBinding) :
+    inner class ProductoViewHolder(private val binding: ItemProductoModificarBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: Producto) {

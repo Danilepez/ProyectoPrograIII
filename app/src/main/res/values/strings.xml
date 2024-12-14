@@ -43,4 +43,6 @@
     <string name="eliminar_texto">Eliminar</string>
     <string name="chequear">Chequear</string>
     <string name="recuerdame">Recuerdame</string>
+    <string name="agregar_a_contenedor">Agregar a Contenedor</string>
+    <string name="productos_comunes">Productos Comunes</string>
 </resources>
