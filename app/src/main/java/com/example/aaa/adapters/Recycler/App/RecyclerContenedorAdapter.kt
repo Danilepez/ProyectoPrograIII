@@ -79,5 +79,6 @@ class RecyclerContenedorAdapter :
         listaDatos.clear()
         listaDatos.addAll(list)
         notifyDataSetChanged()
+        //probar
     }
 }
