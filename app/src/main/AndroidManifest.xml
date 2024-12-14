@@ -13,13 +13,25 @@
         android:theme="@style/Theme.AAA"
         tools:targetApi="31">
         <activity
+            android:name=".EliminarProductosContenedorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProductosComunesContenedorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ModificarContenedorActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".Combinar2"
+            android:name=".CombinarActivity2"
             android:exported="false" />
         <activity
             android:name=".ContenedorActivity"
@@ -28,25 +40,23 @@
             android:name=".CrearContenedorActivity"
             android:exported="false" />
         <activity
-            android:name=".EditarListas"
+            android:name=".EditarListasActivity"
             android:exported="false" />
         <activity
-            android:name=".ListaEjemplo"
+            android:name=".ListaEjemploActivity"
             android:exported="false" />
         <activity
-            android:name=".VencenPronto"
+            android:name=".VencenProntoActivity"
             android:exported="false" />
         <activity
-            android:name=".PantallaPrincipal"
-            android:exported="false" />
-        <activity
-            android:name=".VistaDetallada"
+            android:name=".PantallaPrincipalActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
