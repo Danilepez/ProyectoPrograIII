@@ -1,6 +1,7 @@
 package com.example.aaa.adapters.Recycler.App
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,6 +41,7 @@ class RecyclerContenedorAdapter :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: Producto) {
+            Log.d("RecyclerContenedorAdapter", "Binding producto: ${data.nombre}")
             // Asignar el nombre del producto
             binding.tvNombre.text = data.nombre
 
@@ -76,9 +78,8 @@ class RecyclerContenedorAdapter :
 
     // Agrega una lista de productos al adaptador
     fun addDataToList(list: List<Producto>) {
-        listaDatos.clear()
         listaDatos.addAll(list)
+        Log.d("RecyclerAdapter", "Productos acumulados en RecyclerView: ${listaDatos.size}")
         notifyDataSetChanged()
-        //probar
     }
 }

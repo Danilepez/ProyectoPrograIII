@@ -42,7 +42,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btnAgregar"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="50dp"/>
 
     <!-- Botón para confirmar selección -->
     <Button

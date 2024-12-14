@@ -10,7 +10,7 @@ import com.example.aaa.dataclasses.Producto
 import java.util.Calendar
 
 class RecyclerProductosComunesContenedorAdapter(
-    private val productosSeleccionados: MutableList<Producto> // Lista temporal de productos seleccionados
+    private val productosSeleccionados: MutableList<Producto> = mutableListOf()
 ) : RecyclerView.Adapter<RecyclerProductosComunesContenedorAdapter.ProductoViewHolder>() {
 
     private val listaDatos = mutableListOf<Producto>()
@@ -37,8 +37,7 @@ class RecyclerProductosComunesContenedorAdapter(
             binding.tvCantidad.text = data.cantidad.toString()
 
             binding.btnSumar.setOnClickListener {
-                data.cantidad++
-                binding.tvCantidad.text = data.cantidad.toString()
+                binding.tvCantidad.text = binding.tvCantidad.text.toString().toInt().plus(1).toString()
 
                 // Agregar a la lista temporal si la cantidad > 0
                 if (!productosSeleccionados.contains(data)) {
@@ -47,12 +46,11 @@ class RecyclerProductosComunesContenedorAdapter(
             }
 
             binding.btnRestar.setOnClickListener {
-                if (data.cantidad > 0) {
-                    data.cantidad--
-                    binding.tvCantidad.text = data.cantidad.toString()
+                if (binding.tvCantidad.text.toString().toInt() > 0) {
+                    binding.tvCantidad.text = binding.tvCantidad.text.toString().toInt().minus(1).toString()
 
                     // Quitar de la lista temporal si la cantidad es 0
-                    if (data.cantidad == 0) {
+                    if (binding.tvCantidad.text.toString().toInt() == 0) {
                         productosSeleccionados.remove(data)
                     }
                 }
