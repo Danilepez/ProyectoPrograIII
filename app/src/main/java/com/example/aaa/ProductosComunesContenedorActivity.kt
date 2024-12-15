@@ -4,58 +4,54 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.aaa.adapters.Recycler.App.RecyclerProductosComunesContenedorAdapter
 import com.example.aaa.databinding.ActivityProductosComunesContenedorBinding
+import com.example.aaa.dataclasses.Producto
 import com.example.aaa.singletons.ProductosComunes
 import com.example.aaa.singletons.ProductosContenedor
 
 class ProductosComunesContenedorActivity : AppCompatActivity() {
 
-    companion object {
-        // Clave para pasar los productos seleccionados entre actividades
-        const val CLAVE_PRODUCTOS_SELECCIONADOS = "PRODUCTOS_SELECCIONADOS"
-    }
-
     private lateinit var binding: ActivityProductosComunesContenedorBinding
-    private lateinit var adapter: RecyclerProductosComunesContenedorAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProductosComunesContenedorBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // Configurar el RecyclerView
-        adapter = RecyclerProductosComunesContenedorAdapter()
-        binding.recyclerViewProductosComunes.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        binding.recyclerViewProductosComunes.adapter = adapter
-
+        initRecyclerView()
 
         binding.btnAgregar.setOnClickListener {
-            val productosSeleccionados = ProductosComunes.obtenerProductos().filter { it.cantidad > 0 }
+            ProductosComunes.productosComunesList.forEach { producto ->
+                if (producto.cantidad > 0) {
+                    val productoTemp = Producto(
+                        nombre = producto.nombre,
+                        fechaVencimiento = producto.fechaVencimiento,
+                        estado = producto.estado,
+                        lista = producto.lista,
+                        cantidad = producto.cantidad,
+                        imagen = producto.imagen
+                    )
 
-            productosSeleccionados.forEach { productoSeleccionado ->
-                val productoExistente = ProductosContenedor.obtenerProductos().find { it.nombre == productoSeleccionado.nombre }
-
-                if (productoExistente != null) {
-                    // Si ya existe, sumar la cantidad seleccionada
-                    productoExistente.cantidad += productoSeleccionado.cantidad
-                } else {
-                    // Si no existe, agregar el producto con la cantidad seleccionada
-                    ProductosContenedor.agregarProducto(productoSeleccionado.copy())
+                    ProductosContenedor.productosContenedor.add(productoTemp)
+                    producto.cantidad = 0
                 }
             }
 
-            // Pasar los productos seleccionados al ContenedorActivity
+            Toast.makeText(this, "Productos agregados al contenedor y cantidades restablecidas.", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, ContenedorActivity::class.java)
-            intent.putExtra(CLAVE_PRODUCTOS_SELECCIONADOS, ArrayList(productosSeleccionados)) // Enviar lista de productos
             startActivity(intent)
-
-            // Reiniciar las cantidades en ProductosComunes
-            ProductosComunes.obtenerProductos().forEach { it.cantidad = 0 }
-
-            Toast.makeText(this, "Productos agregados al contenedor", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun initRecyclerView() {
+        val manager = GridLayoutManager(this, 2)
+        val decoration = DividerItemDecoration(this, manager.orientation)
+        binding.recyclerViewProductosComunes.layoutManager = manager
+        binding.recyclerViewProductosComunes.adapter = RecyclerProductosComunesContenedorAdapter(ProductosComunes.productosComunesList)
+        binding.recyclerViewProductosComunes.addItemDecoration(decoration)
+
     }
 }
 
