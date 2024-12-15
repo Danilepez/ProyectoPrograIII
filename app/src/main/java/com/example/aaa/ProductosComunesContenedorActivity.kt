@@ -2,20 +2,23 @@ package com.example.aaa
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.aaa.adapters.Recycler.App.RecyclerProductosComunesContenedorAdapter
 import com.example.aaa.databinding.ActivityProductosComunesContenedorBinding
-import com.example.aaa.dataclasses.Producto
-import com.example.aaa.singletons.ProductosManager
+import com.example.aaa.singletons.ProductosComunes
+import com.example.aaa.singletons.ProductosContenedor
 
 class ProductosComunesContenedorActivity : AppCompatActivity() {
 
+    companion object {
+        // Clave para pasar los productos seleccionados entre actividades
+        const val CLAVE_PRODUCTOS_SELECCIONADOS = "PRODUCTOS_SELECCIONADOS"
+    }
+
     private lateinit var binding: ActivityProductosComunesContenedorBinding
     private lateinit var adapter: RecyclerProductosComunesContenedorAdapter
-
-    // Lista temporal para almacenar los productos seleccionados con cantidad > 0
-    private val productosSeleccionados = mutableListOf<Producto>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,36 +30,31 @@ class ProductosComunesContenedorActivity : AppCompatActivity() {
         binding.recyclerViewProductosComunes.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         binding.recyclerViewProductosComunes.adapter = adapter
 
-        // Cargar los productos comunes en el adaptador
-        adapter.addDataToList(ProductosManager.productosComunes)
 
-        // Acción del botón "Agregar"
-        // Acción del botón "Agregar"
         binding.btnAgregar.setOnClickListener {
-            // Filtrar productos seleccionados con cantidad > 0
-            val productosSeleccionados = ProductosManager.productosComunes.filter { it.cantidad > 0 }.map { producto ->
-                Producto(
-                    nombre = producto.nombre,
-                    fechaVencimiento = producto.fechaVencimiento,
-                    estado = producto.estado,
-                    lista = producto.lista,
-                    cantidad = producto.cantidad,
-                    imagen = producto.imagen
-                )
+            val productosSeleccionados = ProductosComunes.obtenerProductos().filter { it.cantidad > 0 }
+
+            productosSeleccionados.forEach { productoSeleccionado ->
+                val productoExistente = ProductosContenedor.obtenerProductos().find { it.nombre == productoSeleccionado.nombre }
+
+                if (productoExistente != null) {
+                    // Si ya existe, sumar la cantidad seleccionada
+                    productoExistente.cantidad += productoSeleccionado.cantidad
+                } else {
+                    // Si no existe, agregar el producto con la cantidad seleccionada
+                    ProductosContenedor.agregarProducto(productoSeleccionado.copy())
+                }
             }
 
-            // Crear un intent para pasar los productos seleccionados
+            // Pasar los productos seleccionados al ContenedorActivity
             val intent = Intent(this, ContenedorActivity::class.java)
-            intent.putExtra(ProductosManager.CLAVE_PRODUCTOS_SELECCIONADOS, ArrayList(productosSeleccionados)) // Pasar como ArrayList
+            intent.putExtra(CLAVE_PRODUCTOS_SELECCIONADOS, ArrayList(productosSeleccionados)) // Enviar lista de productos
             startActivity(intent)
-            finish() // Cierra esta actividad
-        }
-    }
 
-    // Método para reiniciar la cantidad de los productos a 0
-    private fun resetCantidadDeProductos() {
-        for (producto in ProductosManager.productosComunes) {
-            producto.cantidad = 0
+            // Reiniciar las cantidades en ProductosComunes
+            ProductosComunes.obtenerProductos().forEach { it.cantidad = 0 }
+
+            Toast.makeText(this, "Productos agregados al contenedor", Toast.LENGTH_SHORT).show()
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.example.aaa.adapters.Recycler.App
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +15,13 @@ class RecyclerContenedorAdapter :
     private val listaDatos = mutableListOf<Producto>()
     private var context: Context? = null
     private var showDetails: Boolean = false // Controla la visibilidad de los detalles
+
+    fun actualizarLista(nuevaLista: List<Producto>) {
+        listaDatos.clear()
+        listaDatos.addAll(nuevaLista)
+        notifyDataSetChanged()
+    }
+    //sirve para actualizar la lista de productos en el contenedor
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -41,8 +47,6 @@ class RecyclerContenedorAdapter :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: Producto) {
-            Log.d("RecyclerContenedorAdapter", "Binding producto: ${data.nombre}")
-            // Asignar el nombre del producto
             binding.tvNombre.text = data.nombre
 
             // Mostrar u ocultar los detalles según el estado de showDetails
@@ -73,13 +77,6 @@ class RecyclerContenedorAdapter :
     // Actualiza el estado de visibilidad de los detalles y notifica el cambio
     fun toggleDetails(show: Boolean) {
         showDetails = show
-        notifyDataSetChanged()
-    }
-
-    // Agrega una lista de productos al adaptador
-    fun addDataToList(list: List<Producto>) {
-        listaDatos.addAll(list)
-        Log.d("RecyclerAdapter", "Productos acumulados en RecyclerView: ${listaDatos.size}")
         notifyDataSetChanged()
     }
 }

@@ -9,9 +9,13 @@ import com.example.aaa.databinding.ItemProductoComunBinding
 import com.example.aaa.dataclasses.Producto
 import java.util.Calendar
 
-class RecyclerProductosComunesContenedorAdapter(
-    private val productosSeleccionados: MutableList<Producto> = mutableListOf()
-) : RecyclerView.Adapter<RecyclerProductosComunesContenedorAdapter.ProductoViewHolder>() {
+class RecyclerProductosComunesContenedorAdapter(): RecyclerView.Adapter<RecyclerProductosComunesContenedorAdapter.ProductoViewHolder>() {
+
+    fun actualizarLista(nuevaLista: List<Producto>) {
+        listaDatos.clear()
+        listaDatos.addAll(nuevaLista)
+        notifyDataSetChanged()
+    }
 
     private val listaDatos = mutableListOf<Producto>()
     private var context: Context? = null
@@ -36,23 +40,17 @@ class RecyclerProductosComunesContenedorAdapter(
             binding.ivImagenProductoComun.setImageResource(data.imagen)
             binding.tvCantidad.text = data.cantidad.toString()
 
+            // Incrementar la cantidad
             binding.btnSumar.setOnClickListener {
-                binding.tvCantidad.text = binding.tvCantidad.text.toString().toInt().plus(1).toString()
-
-                // Agregar a la lista temporal si la cantidad > 0
-                if (!productosSeleccionados.contains(data)) {
-                    productosSeleccionados.add(data)
-                }
+                data.cantidad += 1
+                binding.tvCantidad.text = data.cantidad.toString()
             }
 
+            // Decrementar la cantidad
             binding.btnRestar.setOnClickListener {
-                if (binding.tvCantidad.text.toString().toInt() > 0) {
-                    binding.tvCantidad.text = binding.tvCantidad.text.toString().toInt().minus(1).toString()
-
-                    // Quitar de la lista temporal si la cantidad es 0
-                    if (binding.tvCantidad.text.toString().toInt() == 0) {
-                        productosSeleccionados.remove(data)
-                    }
+                if (data.cantidad > 0) {
+                    data.cantidad -= 1
+                    binding.tvCantidad.text = data.cantidad.toString()
                 }
             }
             binding.etFecha.setOnClickListener {
@@ -84,13 +82,6 @@ class RecyclerProductosComunesContenedorAdapter(
             // Mostrar el DatePickerDialog
             datePickerDialog.show()
         }
-    }
-
-    // Método para cargar datos en el adaptador
-    fun addDataToList(list: List<Producto>) {
-        listaDatos.clear()
-        listaDatos.addAll(list)
-        notifyDataSetChanged()
     }
 }
 
