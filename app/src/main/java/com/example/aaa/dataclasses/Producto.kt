@@ -1,12 +1,10 @@
-package com.example.aaa.dataclasses
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-import java.io.Serializable
-
+@Entity(tableName = "productos")
 data class Producto(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val nombre: String,
-    var fechaVencimiento: String,
-    var estado: String,
-    val lista: String,
-    var cantidad: Int,
-    val imagen: Int
-) : Serializable
+    val cantidad: Int,
+    val fechaVencimiento: String
+)
