@@ -33,14 +33,16 @@ class VencenProntoActivity : AppCompatActivity() {
 
     private fun loadProductos() {
         val productosVencenPronto = listOf(
-            Producto("Producto 1", "12/12/2024", "Vencido", "Lista 1", 5),
-            Producto("Producto 2", "15/01/2025", "Vigente", "Lista 2", 3)
+            Producto(id = 0, nombre = "Producto 1", fechaVencimiento = "12/12/2024", estado = "Vencido", lista = "Lista 1", cantidad = 5),
+            Producto(id = 0, nombre = "Producto 2", fechaVencimiento = "15/01/2025", estado = "Vigente", lista = "Lista 2", cantidad = 3)
         )
 
+
         val productosVencidos = listOf(
-            Producto("Producto 3", "01/11/2024", "Vencido", "Lista 3", 8),
-            Producto("Producto 4", "05/12/2024", "Vencido", "Lista 4", 2)
+            Producto(id = 0, nombre = "Producto 1", fechaVencimiento = "12/12/2024", estado = "Vencido", lista = "Lista 1", cantidad = 5),
+            Producto(id = 0, nombre = "Producto 2", fechaVencimiento = "15/01/2025", estado = "Vigente", lista = "Lista 2", cantidad = 3)
         )
+
 
         vencenProntoAdapter.addDataToList(productosVencenPronto)
         vencidosAdapter.addDataToList(productosVencidos)

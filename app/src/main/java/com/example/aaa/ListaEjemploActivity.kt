@@ -18,8 +18,9 @@ class ListaEjemploActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val productosList = listOf(
-            Producto("Producto 1", "2024-12-31", "Disponible", "Lista 1", 5),
-            Producto("Producto 2", "2025-01-15", "Vencido", "Lista 2", 3)
+            Producto(id = 0, nombre = "Producto 1", fechaVencimiento = "12/03", estado = "Vencido", lista = "Lista 1", cantidad = 5),
+            Producto(id = 0, nombre = "Producto 2", fechaVencimiento = "15/01/2025", estado = "Vigente", lista = "Lista 2", cantidad = 3),
+            Producto(id = 0, nombre = "Producto 3", fechaVencimiento = "20/02/2025", estado = "Vencido", lista = "Lista 3", cantidad = 8)
         )
 
         productoAdapter = ProductoAdapter()

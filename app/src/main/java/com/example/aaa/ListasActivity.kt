@@ -29,9 +29,9 @@ class ListasActivity : AppCompatActivity() {
 
     private fun loadListas() {
         val listas = listOf(
-            Lista("Supermercado", 10),
-            Lista("Carnicería", 5),
-            Lista("Frutería", 8)
+            Lista(nombre = "Supermercado"),
+            Lista(nombre = "Carnicería"),
+            Lista(nombre = "Frutería")
         )
         listasAdapter.updateList(listas)
     }
