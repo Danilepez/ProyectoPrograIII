@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="210dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- Imagen del producto -->
+    <ImageView
+        android:id="@+id/ivImagenProductoComun"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/pantalla_1"
+        app:layout_constraintTop_toBottomOf="@id/tvNombreProductoComun"
+        app:layout_constraintStart_toStartOf="@id/tvNombreProductoComun"
+        app:layout_constraintEnd_toEndOf="@id/tvNombreProductoComun"/>
+
+    <!-- Nombre del producto -->
+    <TextView
+        android:id="@+id/tvNombreProductoComun"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/producto_1"
+        android:textSize="16sp"
+        android:layout_marginStart="60dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- Botón para restar cantidad -->
+    <Button
+        android:id="@+id/btnRestar"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:text="@string/eliminar"
+        app:layout_constraintTop_toBottomOf="@id/btnSumar"
+        app:layout_constraintStart_toEndOf="@id/tvCantidad"
+        app:layout_constraintEnd_toEndOf="@id/tvNombreProductoComun"/>
+
+    <!-- Cantidad -->
+    <TextView
+        android:id="@+id/tvCantidad"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/_0"
+        app:layout_constraintStart_toStartOf="@id/tvNombreProductoComun"
+        app:layout_constraintTop_toBottomOf="@id/ivImagenProductoComun"/>
+
+    <!-- Botón para sumar cantidad -->
+    <Button
+        android:id="@+id/btnSumar"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:text="@string/añadir"
+        app:layout_constraintStart_toEndOf="@id/tvCantidad"
+        app:layout_constraintEnd_toEndOf="@id/tvNombreProductoComun"
+        app:layout_constraintTop_toBottomOf="@id/ivImagenProductoComun"/>
+
+    <!-- Campo para fecha de vencimiento -->
+    <EditText
+        android:id="@+id/etFecha"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/fecha"
+        android:inputType="date"
+        android:autofillHints="creditCardExpirationDate"
+        android:textSize="15sp"
+        android:focusable="false"
+        android:clickable="true"
+        app:layout_constraintTop_toBottomOf="@id/btnRestar"
+        app:layout_constraintStart_toStartOf="@id/tvNombreProductoComun"
+        app:layout_constraintEnd_toEndOf="@id/tvNombreProductoComun" />
+</androidx.constraintlayout.widget.ConstraintLayout>

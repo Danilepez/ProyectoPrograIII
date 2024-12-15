@@ -40,8 +40,10 @@ class RecyclerContenedorAdapter :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: Producto) {
+            // Asignar el nombre del producto
             binding.tvNombre.text = data.nombre
 
+            // Mostrar u ocultar los detalles según el estado de showDetails
             if (showDetails) {
                 binding.tvLista.visibility = View.VISIBLE
                 binding.tvFecha.visibility = View.VISIBLE
@@ -66,11 +68,13 @@ class RecyclerContenedorAdapter :
         }
     }
 
+    // Actualiza el estado de visibilidad de los detalles y notifica el cambio
     fun toggleDetails(show: Boolean) {
         showDetails = show
         notifyDataSetChanged()
     }
 
+    // Agrega una lista de productos al adaptador
     fun addDataToList(list: List<Producto>) {
         listaDatos.clear()
         listaDatos.addAll(list)

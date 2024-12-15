@@ -43,6 +43,9 @@
     <string name="eliminar_texto">Eliminar</string>
     <string name="chequear">Chequear</string>
     <string name="recuerdame">Recuerdame</string>
+    <string name="agregar_a_contenedor">Agregar a Contenedor</string>
+    <string name="productos_comunes">Productos Comunes</string>
+    <string name="_0">0</string>
     <string name="de_lista1">De: lista1</string>
     <string name="fecha_ejemplo">01/01/2001</string>
     <string name="unidades_ejemplo">10 unidades</string>

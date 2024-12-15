@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.aaa.adapters.Recycler.Contenedor.RecyclerModificarContenedorAdapter
+import com.example.aaa.adapters.Recycler.App.RecyclerModificarContenedorAdapter
 import com.example.aaa.databinding.ActivityModificarContenedorBinding
 
 class ModificarContenedorActivity : AppCompatActivity() {
