@@ -1,20 +1,41 @@
-package com.example.aaa
+package com.example.aaa.activities
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.aaa.R
+import com.example.aaa.adapters.RecyclerListasAdapter
+import com.example.aaa.dataclasses.Lista
+import com.example.aaa.databinding.ActivityListasBinding
 
 class ListasActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityListasBinding
+    private lateinit var listasAdapter: RecyclerListasAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_listas)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityListasBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        listasAdapter = RecyclerListasAdapter(mutableListOf()) { lista ->
+            onListaClick(lista)
         }
+        binding.recyclerViewLists.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewLists.adapter = listasAdapter
+
+        loadListas()
+    }
+
+    private fun loadListas() {
+        val listas = listOf(
+            Lista("Supermercado", 10),
+            Lista("Carnicería", 5),
+            Lista("Frutería", 8)
+        )
+        listasAdapter.updateList(listas)
+    }
+
+    private fun onListaClick(lista: Lista) {
     }
 }

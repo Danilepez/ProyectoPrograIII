@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ListaEjemploActivity">
 
-    <!-- Layout superior -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/halfConstraintLayout"
         android:layout_width="0dp"
@@ -19,12 +18,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Título -->
         <TextView
             android:id="@+id/titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/vencen_pronto"
+            android:text="Lista"
             android:textSize="30sp"
             android:textStyle="bold"
             android:layout_marginTop="35dp"
@@ -34,7 +32,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             style="@style/Ese"/>
 
-        <!-- RecyclerView para productos -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewProductos"
             android:layout_width="0dp"
@@ -46,7 +43,6 @@
             android:layout_marginTop="20dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Layout inferior -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/halfConstraintLayout2"
         android:layout_width="0dp"
@@ -58,7 +54,6 @@
         app:layout_constraintTop_toBottomOf="@id/halfConstraintLayout"
         app:layout_constraintWidth_percent="1">
 
-        <!-- Botones -->
         <Button
             android:id="@+id/btn_combi"
             style="@style/Ese"
