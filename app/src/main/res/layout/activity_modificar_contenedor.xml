@@ -8,7 +8,6 @@
     tools:context=".ModificarContenedorActivity">
 
 
-    <!-- Botones estáticos -->
     <Button
         android:id="@+id/btn_plus"
         android:layout_width="70dp"
@@ -63,7 +62,6 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="100dp" />
 
-    <!-- RecyclerView para los productos -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_modificar"
         android:layout_width="match_parent"

@@ -1,51 +1,24 @@
 package com.example.aaa.adapters.Recycler.App
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.aaa.databinding.ItemProductoModificarBinding
+import com.example.aaa.R
 import com.example.aaa.dataclasses.Producto
 
-class RecyclerModificarContenedorAdapter :
-    RecyclerView.Adapter<RecyclerModificarContenedorAdapter.ProductoViewHolder>() {
+class RecyclerModificarContenedorAdapter(private val productos: List<Producto>) : RecyclerView.Adapter<ProductosModificarViewHolder>() {
 
-    private val listaDatos = mutableListOf<Producto>()
-    private var context: Context? = null
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ProductoViewHolder {
-        context = parent.context
-        return ProductoViewHolder(
-            ItemProductoModificarBinding.inflate(
-                LayoutInflater.from(context),
-                parent,
-                false
-            )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductosModificarViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        return ProductosModificarViewHolder(
+            layoutInflater.inflate(R.layout.item_producto_modificar, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: ProductoViewHolder, position: Int) {
-        holder.bind(listaDatos[position]) // Vincula cada producto al ViewHolder
+    override fun onBindViewHolder(holder: ProductosModificarViewHolder, position: Int) {
+        holder.render(productos[position])
     }
 
-    override fun getItemCount(): Int = listaDatos.size
-
-    inner class ProductoViewHolder(private val binding: ItemProductoModificarBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(data: Producto) {
-            // Asignar solo el nombre del producto al TextView
-            binding.tvNombre.text = data.nombre
-        }
-    }
-
-    // Agrega una lista de productos al adaptador
-    fun addDataToList(list: List<Producto>) {
-        listaDatos.clear()
-        listaDatos.addAll(list)
-        notifyDataSetChanged()
-    }
+    override fun getItemCount(): Int = productos.size
 }
