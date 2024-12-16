@@ -50,4 +50,5 @@
     <string name="fecha_ejemplo">01/01/2001</string>
     <string name="unidades_ejemplo">10 unidades</string>
     <string name="estado_vencido">Estado: Vencido</string>
+    <string name="eliminar_del_contenedor">Eliminar del Contenedor</string>
 </resources>

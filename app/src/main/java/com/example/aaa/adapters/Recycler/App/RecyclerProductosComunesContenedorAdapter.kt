@@ -1,12 +1,10 @@
 package com.example.aaa.adapters.Recycler.App
 
-import android.app.DatePickerDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aaa.R
 import com.example.aaa.dataclasses.Producto
-import java.util.Calendar
 
 class RecyclerProductosComunesContenedorAdapter(private val productosComunes: List<Producto>) : RecyclerView.Adapter<ProductosComunesViewHolder>() {
 
@@ -24,8 +22,6 @@ class RecyclerProductosComunesContenedorAdapter(private val productosComunes: Li
             holder.binding.tvCantidad.text = (holder.binding.tvCantidad.text.toString().toInt() + 1).toString()
             val cantidad = item.cantidad + 1
             item.cantidad = cantidad
-
-            notifyDataSetChanged()
         }
 
         holder.binding.btnRestar.setOnClickListener {
@@ -36,7 +32,6 @@ class RecyclerProductosComunesContenedorAdapter(private val productosComunes: Li
                 val cantidad = item.cantidad - 1
                 item.cantidad = cantidad
             }
-            notifyDataSetChanged()
         }
 
     }
