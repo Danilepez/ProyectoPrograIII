@@ -8,8 +8,8 @@ import com.example.aaa.R
 import com.example.aaa.dataclasses.Producto
 import com.example.aaa.databinding.ItemProductoBinding
 
-class ProductoAdapter :
-    RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
+class RecyclerListaEjemploAdapter :
+    RecyclerView.Adapter<RecyclerListaEjemploAdapter.ProductoViewHolder>() {
 
     private val listaDatos = mutableListOf<Producto>()
     private var context: Context? = null
