@@ -30,10 +30,11 @@ class ContenedorActivity : AppCompatActivity() {
             adapter = recyclerContenedorAdapter
         }
 
+        // Recibir los productos enviados desde ListaEjemploActivity
         val productosRecibidos = intent.getSerializableExtra(ProductosManager.CLAVE_PRODUCTOS_SELECCIONADOS) as? ArrayList<Producto>
 
         productosRecibidos?.forEach { productoSeleccionado ->
-            var productoExistente = productosEnContenedor.find { it.nombre == productoSeleccionado.nombre }
+            val productoExistente = productosEnContenedor.find { it.nombre == productoSeleccionado.nombre }
 
             if (productoExistente != null) {
                 productoExistente.cantidad += productoSeleccionado.cantidad
@@ -43,7 +44,7 @@ class ContenedorActivity : AppCompatActivity() {
         }
 
         recyclerContenedorAdapter.addDataToList(productosEnContenedor)
-        Log.d("ContenedorActivity", "Productos enviados al RecyclerView: ${ProductosManager.productosEnContenedor.size}")
+        Log.d("ContenedorActivity", "Productos enviados al RecyclerView: ${productosEnContenedor.size}")
 
         binding.btnCompactView.setOnClickListener {
             if (showDetails) {

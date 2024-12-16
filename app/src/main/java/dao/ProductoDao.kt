@@ -1,4 +1,12 @@
-import androidx.room.*
+package com.example.aaa.daos
+
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
+import androidx.room.OnConflictStrategy
+import com.example.aaa.dataclasses.Producto // Asegúrate de importar correctamente la clase Producto
 
 @Dao
 interface ProductoDao {
@@ -15,3 +23,4 @@ interface ProductoDao {
     @Update
     suspend fun updateProducto(producto: Producto)
 }
+

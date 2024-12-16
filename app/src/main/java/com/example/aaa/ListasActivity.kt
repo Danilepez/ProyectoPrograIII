@@ -8,6 +8,7 @@ import com.example.aaa.adapters.RecyclerListasAdapter
 import com.example.aaa.dataclasses.Lista
 import com.example.aaa.databinding.ActivityListasBinding
 
+
 class ListasActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityListasBinding
