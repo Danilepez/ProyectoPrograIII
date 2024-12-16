@@ -16,31 +16,29 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Initialize Firebase Auth
+        // Inicializar Firebase Auth
         auth = Firebase.auth
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        // Verificar si las credenciales están almacenadas
-        val sharedPreferences = getSharedPreferences("USER_PREF", MODE_PRIVATE)
-        val savedEmail = sharedPreferences.getString("EMAIL", null)
-        val savedPassword = sharedPreferences.getString("PASSWORD", null)
-
-        if (!savedEmail.isNullOrEmpty() && !savedPassword.isNullOrEmpty()) {
-            // Si hay credenciales guardadas, iniciar sesión automáticamente
-            loginUsuario(savedEmail, savedPassword, rememberMe = false)
+        // Verificar si el usuario ya está autenticado
+        if (auth.currentUser != null) {
+            // Si el usuario está autenticado, redirigir a la pantalla principal
+            val intentHomeScreen = Intent(this, PantallaPrincipalActivity::class.java)
+            startActivity(intentHomeScreen)
+            finish() // Finalizar LoginActivity para evitar que el usuario regrese
         }
 
+        // Configurar el botón de inicio de sesión
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
-            val rememberMe = binding.cbRememberMe.isChecked
-            loginUsuario(email, password, rememberMe)
+
+            loginUsuario(email, password)
         }
     }
-    fun loginUsuario(email: String, password: String, rememberMe: Boolean){
+    fun loginUsuario(email: String, password: String) {
         if (email.isEmpty()) {
             binding.etEmail.error = "Correo electrónico requerido"
             return
@@ -49,27 +47,34 @@ class LoginActivity : AppCompatActivity() {
             binding.passwdTitle.error = "Contraseña requerida"
             return
         }
-        auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this){ respuesta ->
 
-            if(respuesta.isSuccessful){
+        // Intentar iniciar sesión con Firebase Auth
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { respuesta ->
+            if (respuesta.isSuccessful) {
                 val user = auth.currentUser
-                if(rememberMe){
-                    val sharedPreferences = getSharedPreferences("USER_PREF", MODE_PRIVATE)
-                    val editor = sharedPreferences.edit()
-                    editor.putString("email", email)
-                    editor.putString("password", password)
-                    editor.apply()
-                }
+                Toast.makeText(this, "Bienvenido, ${user?.email}", Toast.LENGTH_SHORT).show()
 
-                Toast.makeText(this, "Inicio de sesión: ${user?.email}", Toast.LENGTH_SHORT).show()
-
-
-                val intent = Intent(this, PantallaPrincipalActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
-            } else{
+                // Redirigir a la pantalla principal
+                val intentHomeScreen = Intent(this, PantallaPrincipalActivity::class.java)
+                startActivity(intentHomeScreen)
+                finish() // Finalizar LoginActivity
+            } else {
+                // Mostrar error si no se puede iniciar sesión
                 Toast.makeText(this, "Error en el inicio de sesión: ${respuesta.exception?.message}", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        // Verificar si hay un usuario autenticado
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            // Si ya hay un usuario autenticado, redirigir a la pantalla principal
+            val intentHomeScreen = Intent(this, PantallaPrincipalActivity::class.java)
+            startActivity(intentHomeScreen)
+            finish() // Finalizar LoginActivity para que el usuario no regrese
         }
     }
 }
