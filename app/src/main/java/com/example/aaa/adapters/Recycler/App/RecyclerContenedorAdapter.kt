@@ -1,8 +1,6 @@
 package com.example.aaa.adapters.Recycler.App
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aaa.R
@@ -10,9 +8,7 @@ import com.example.aaa.dataclasses.Producto
 
 class RecyclerContenedorAdapter(private val productos: List<Producto>) : RecyclerView.Adapter<ProductosViewHolder> (){
 
-    private val listaDatos = mutableListOf<Producto>()
-    private var context: Context? = null
-    private var showDetails: Boolean = false // Controla la visibilidad de los detalles
+    private var showDetails: Boolean = false
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductosViewHolder {
@@ -30,8 +26,8 @@ class RecyclerContenedorAdapter(private val productos: List<Producto>) : Recycle
 
 
     // Actualiza el estado de visibilidad de los detalles y notifica el cambio
-    /*fun toggleDetails(show: Boolean) {
+    fun toggleDetails(show: Boolean) {
         showDetails = show
         notifyDataSetChanged()
-    }*/
+    }
 }
