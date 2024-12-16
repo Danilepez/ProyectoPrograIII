@@ -2,62 +2,64 @@ package com.example.aaa
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.aaa.adapters.Recycler.App.RecyclerProductosComunesContenedorAdapter
 import com.example.aaa.databinding.ActivityProductosComunesContenedorBinding
 import com.example.aaa.dataclasses.Producto
-import com.example.aaa.singletons.ProductosManager
+import com.example.aaa.singletons.ProductosComunes
+import com.example.aaa.singletons.ProductosContenedor
 
 class ProductosComunesContenedorActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProductosComunesContenedorBinding
-    private lateinit var adapter: RecyclerProductosComunesContenedorAdapter
-
-    // Lista temporal para almacenar los productos seleccionados con cantidad > 0
-    private val productosSeleccionados = mutableListOf<Producto>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProductosComunesContenedorBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        initRecyclerView()
 
-        // Configurar el RecyclerView
-        adapter = RecyclerProductosComunesContenedorAdapter()
-        binding.recyclerViewProductosComunes.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        binding.recyclerViewProductosComunes.adapter = adapter
-
-        // Cargar los productos comunes en el adaptador
-        adapter.addDataToList(ProductosManager.productosComunes)
-
-        // Acción del botón "Agregar"
-        // Acción del botón "Agregar"
         binding.btnAgregar.setOnClickListener {
-            // Filtrar productos seleccionados con cantidad > 0
-            val productosSeleccionados = ProductosManager.productosComunes.filter { it.cantidad > 0 }.map { producto ->
-                Producto(
-                    nombre = producto.nombre,
-                    fechaVencimiento = producto.fechaVencimiento,
-                    estado = producto.estado,
-                    lista = producto.lista,
-                    cantidad = producto.cantidad,
-                    imagen = producto.imagen
-                )
+            ProductosComunes.productosComunesList.forEach { producto ->
+                if (producto.cantidad > 0) {
+                    val existingProduct = ProductosContenedor.productosContenedor.find {
+                        it.nombre == producto.nombre && it.fechaVencimiento == producto.fechaVencimiento
+                    }
+
+                    if (existingProduct != null) {
+                        existingProduct.cantidad += producto.cantidad
+                    } else {
+                        val productoTemp = Producto(
+                            nombre = producto.nombre,
+                            fechaVencimiento = producto.fechaVencimiento,
+                            estado = producto.estado,
+                            lista = producto.lista,
+                            cantidad = producto.cantidad,
+                            imagen = producto.imagen
+                        )
+                        ProductosContenedor.productosContenedor.add(productoTemp)
+                    }
+
+                    producto.cantidad = 0
+                }
             }
 
-            // Crear un intent para pasar los productos seleccionados
+            Toast.makeText(this, "Productos agregados al contenedor", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, ContenedorActivity::class.java)
-            intent.putExtra(ProductosManager.CLAVE_PRODUCTOS_SELECCIONADOS, ArrayList(productosSeleccionados)) // Pasar como ArrayList
             startActivity(intent)
-            finish() // Cierra esta actividad
         }
     }
 
-    // Método para reiniciar la cantidad de los productos a 0
-    private fun resetCantidadDeProductos() {
-        for (producto in ProductosManager.productosComunes) {
-            producto.cantidad = 0
-        }
+    private fun initRecyclerView() {
+        val manager = GridLayoutManager(this, 2)
+        val decoration = DividerItemDecoration(this, manager.orientation)
+        binding.recyclerViewProductosComunes.layoutManager = manager
+        binding.recyclerViewProductosComunes.adapter = RecyclerProductosComunesContenedorAdapter(ProductosComunes.productosComunesList)
+        binding.recyclerViewProductosComunes.addItemDecoration(decoration)
+
     }
 }
 

@@ -3,14 +3,16 @@ package com.example.aaa
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aaa.adapters.Recycler.App.RecyclerModificarContenedorAdapter
 import com.example.aaa.databinding.ActivityModificarContenedorBinding
+import com.example.aaa.singletons.ProductosContenedor
 
 class ModificarContenedorActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityModificarContenedorBinding
-    private val recyclerModificarContenedorAdapter by lazy { RecyclerModificarContenedorAdapter() }
+    private lateinit var recyclerModificarContenedorAdapter: RecyclerModificarContenedorAdapter // No usamos `by lazy` ahora
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,25 +20,28 @@ class ModificarContenedorActivity : AppCompatActivity() {
         binding = ActivityModificarContenedorBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        recyclerModificarContenedorAdapter = RecyclerModificarContenedorAdapter(ProductosContenedor.productosContenedor)
 
-        // Configuración del RecyclerView
-        binding.rvModificar.apply{
-            layoutManager = LinearLayoutManager(this@ModificarContenedorActivity)
-            adapter = recyclerModificarContenedorAdapter
-        }
+        initRecyclerView()
 
-        // Configurar botón "+"
+
         binding.btnPlus.setOnClickListener {
-            // Redirige a la pantalla de "Productos comunes contenedor" (Pantalla 9)
             val intent = Intent(this, ProductosComunesContenedorActivity::class.java)
             startActivity(intent)
         }
 
-        // Configurar botón "-"
         binding.btnMinus.setOnClickListener {
-            // Redirige a la pantalla de "Eliminar productos de contenedor" (Pantalla 10)
             val intent = Intent(this, EliminarProductosContenedorActivity::class.java)
             startActivity(intent)
         }
+    }
+    private fun initRecyclerView() {
+        val manager = LinearLayoutManager(this)
+
+        val decoration = DividerItemDecoration(this, manager.orientation)
+
+        binding.rvModificar.layoutManager = manager
+        binding.rvModificar.adapter = recyclerModificarContenedorAdapter
+        binding.rvModificar.addItemDecoration(decoration)
     }
 }
