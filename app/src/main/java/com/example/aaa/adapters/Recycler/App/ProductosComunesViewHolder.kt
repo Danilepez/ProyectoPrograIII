@@ -1,15 +1,9 @@
 package com.example.aaa.adapters.Recycler.App
 
 import android.app.DatePickerDialog
-import android.content.Context
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.aaa.R
 import com.example.aaa.databinding.ItemProductoComunBinding
 import com.example.aaa.dataclasses.Producto
 import java.util.Calendar
@@ -26,17 +20,19 @@ class ProductosComunesViewHolder (view: View): RecyclerView.ViewHolder (view){
 
         binding.etFecha.setText(productoModel.fechaVencimiento)
         binding.etFecha.setOnClickListener {
-            showDatePickerDialog(binding.etFecha)
+            showDatePickerDialog(binding.etFecha, productoModel)
         }
     }
-    fun showDatePickerDialog(etFecha: EditText) {
+    fun showDatePickerDialog(etFecha: EditText, productoModel: Producto) {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
-        val dpd = DatePickerDialog(etFecha.context, { view, year, monthOfYear, dayOfMonth ->
-            etFecha.setText("" + dayOfMonth + "/" + (monthOfYear + 1) + "/" + year)
+        val dpd = DatePickerDialog(etFecha.context, { _, year, monthOfYear, dayOfMonth ->
+            val nuevaFecha = "$dayOfMonth/${monthOfYear + 1}/$year"
+            productoModel.fechaVencimiento = nuevaFecha // Actualizamos el modelo
+            etFecha.setText(nuevaFecha) // Reflejamos el cambio en la vista
         }, year, month, day)
         dpd.show()
     }

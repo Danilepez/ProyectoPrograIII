@@ -18,14 +18,13 @@ class RecyclerContenedorAdapter(private val productos: List<Producto>) : Recycle
 
     override fun onBindViewHolder(holder: ProductosViewHolder, position: Int) {
         val item = productos[position]
-        holder.render(item)
+        holder.render(item, showDetails)
     }
 
     override fun getItemCount(): Int = productos.size
 
 
 
-    // Actualiza el estado de visibilidad de los detalles y notifica el cambio
     fun toggleDetails(show: Boolean) {
         showDetails = show
         notifyDataSetChanged()

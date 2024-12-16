@@ -11,11 +11,11 @@ class ProductosViewHolder (view: View): RecyclerView.ViewHolder(view) {
     private var showDetails: Boolean = false // Controla la visibilidad de los detalles
     val binding = ItemProductoBinding.bind(view)
 
-    fun render(productoModel: Producto) {
+    fun render(productoModel: Producto, showDetails: Boolean) {
         binding.tvNombre.text = productoModel.nombre
 
         // Mostrar u ocultar los detalles según el estado de showDetails
-        if (showDetails) {
+        if (this.showDetails) {
             binding.tvLista.visibility = View.VISIBLE
             binding.tvFecha.visibility = View.VISIBLE
             binding.tvCantidad.visibility = View.VISIBLE
@@ -35,19 +35,6 @@ class ProductosViewHolder (view: View): RecyclerView.ViewHolder(view) {
             binding.tvFecha.visibility = View.GONE
             binding.tvCantidad.visibility = View.GONE
             binding.tvEstado.visibility = View.GONE
-        }
-    }
-    // Función para cambiar la visibilidad de los detalles (dentro del ViewHolder)
-    fun toggleDetails(showDetails: Boolean) {
-        // Cambiar visibilidad de los detalles según el estado
-        if (showDetails) {
-            binding.tvFecha.visibility = View.VISIBLE
-            binding.tvEstado.visibility = View.VISIBLE
-            binding.tvLista.visibility = View.VISIBLE
-        } else {
-            binding.tvFecha.visibility = View.GONE
-            binding.tvEstado.visibility = View.GONE
-            binding.tvLista.visibility = View.GONE
         }
     }
 }
