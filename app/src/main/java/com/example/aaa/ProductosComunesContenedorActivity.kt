@@ -25,21 +25,29 @@ class ProductosComunesContenedorActivity : AppCompatActivity() {
         binding.btnAgregar.setOnClickListener {
             ProductosComunes.productosComunesList.forEach { producto ->
                 if (producto.cantidad > 0) {
-                    val productoTemp = Producto(
-                        nombre = producto.nombre,
-                        fechaVencimiento = producto.fechaVencimiento,
-                        estado = producto.estado,
-                        lista = producto.lista,
-                        cantidad = producto.cantidad,
-                        imagen = producto.imagen
-                    )
+                    val existingProduct = ProductosContenedor.productosContenedor.find {
+                        it.nombre == producto.nombre && it.fechaVencimiento == producto.fechaVencimiento
+                    }
 
-                    ProductosContenedor.productosContenedor.add(productoTemp)
+                    if (existingProduct != null) {
+                        existingProduct.cantidad += producto.cantidad
+                    } else {
+                        val productoTemp = Producto(
+                            nombre = producto.nombre,
+                            fechaVencimiento = producto.fechaVencimiento,
+                            estado = producto.estado,
+                            lista = producto.lista,
+                            cantidad = producto.cantidad,
+                            imagen = producto.imagen
+                        )
+                        ProductosContenedor.productosContenedor.add(productoTemp)
+                    }
+
                     producto.cantidad = 0
                 }
             }
 
-            Toast.makeText(this, "Productos agregados al contenedor y cantidades restablecidas.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Productos agregados al contenedor", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, ContenedorActivity::class.java)
             startActivity(intent)
         }

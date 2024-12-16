@@ -15,7 +15,7 @@ class ProductosViewHolder (view: View): RecyclerView.ViewHolder(view) {
         binding.tvNombre.text = productoModel.nombre
 
         // Mostrar u ocultar los detalles según el estado de showDetails
-        if (this.showDetails) {
+        if (showDetails) {
             binding.tvLista.visibility = View.VISIBLE
             binding.tvFecha.visibility = View.VISIBLE
             binding.tvCantidad.visibility = View.VISIBLE
