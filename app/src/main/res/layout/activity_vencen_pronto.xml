@@ -19,6 +19,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+
+        <!-- Botón de flecha hacia atrás -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="96dp"
+            android:layout_height="73dp"
+            android:backgroundTint="#00FFFFFF"
+            android:contentDescription="@string/back"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/flecha_atras"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <TextView
             android:id="@+id/titulo"
             android:layout_width="wrap_content"
@@ -82,3 +95,4 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

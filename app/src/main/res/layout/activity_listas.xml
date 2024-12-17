@@ -4,7 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
+    android:background="@drawable/images"
     android:layout_height="match_parent"
     tools:context=".ListasActivity">
+
+
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/listas"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_marginTop="100dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Ese" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewLists"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/titulo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/btn_plus"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/añadir"
+        android:backgroundTint="@color/cardview_shadow_start_color"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="60dp"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/btn_minus"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/eliminar"
+        android:backgroundTint="@color/cardview_shadow_start_color"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_plus"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

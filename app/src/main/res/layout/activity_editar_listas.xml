@@ -8,7 +8,6 @@
     android:background="@drawable/images"
     tools:context=".EditarListasActivity">
 
-    <!-- Botón Añadir -->
     <Button
         android:id="@+id/btn_plus"
         android:layout_width="70dp"
@@ -24,7 +23,6 @@
         android:layout_marginEnd="60dp"
         android:layout_marginTop="20dp" />
 
-    <!-- Botón Eliminar -->
     <Button
         android:id="@+id/btn_minus"
         android:layout_width="70dp"
@@ -40,7 +38,6 @@
         android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp" />
 
-    <!-- Botón Volver -->
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="73dp"
@@ -53,7 +50,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewProductos"
         android:layout_width="0dp"
