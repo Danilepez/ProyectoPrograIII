@@ -1,38 +1,29 @@
 package com.example.aaa
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aaa.adapters.Recycler.App.RecyclerContenedorAdapter
 import com.example.aaa.databinding.ActivityContenedorBinding
-import com.example.aaa.dataclasses.Producto
+import com.example.aaa.singletons.ProductosContenedor
 
 class ContenedorActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityContenedorBinding
-    private val recyclerContenedorAdapter by lazy {RecyclerContenedorAdapter()}
-    private lateinit var productList: List<Producto>
+    private lateinit var recyclerContenedorAdapter : RecyclerContenedorAdapter
     private var showDetails: Boolean = false // Estado global de visibilidad
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityContenedorBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        recyclerContenedorAdapter = RecyclerContenedorAdapter(ProductosContenedor.productosContenedor)
+        initRecyclerView()
 
-        binding.rvProducts.apply {
-            layoutManager = LinearLayoutManager(this@ContenedorActivity)
-            adapter = recyclerContenedorAdapter
-        }
-
-        // Crear una lista de productos
-        productList = listOf(
-            Producto("Producto 1", "Lista A", "2024-12-01","Disponible", 10),
-            Producto("Producto 2", "Lista B", "2025-01-15","Agotado", 20),
-            Producto("Producto 3", "Lista C", "2024-11-20", "Disponible", 5)
-        )
-
-        // Agregar los productos al adaptador
-        recyclerContenedorAdapter.addDataToList(productList)
 
         // Configurar botones
         binding.btnCompactView.setOnClickListener {
@@ -48,5 +39,17 @@ class ContenedorActivity : AppCompatActivity() {
                 recyclerContenedorAdapter.toggleDetails(true)
             }
         }
+
+        binding.btnModify.setOnClickListener {
+            val intent = Intent(this, ModificarContenedorActivity::class.java)
+            startActivity(intent)
+        }
+    }
+    private fun initRecyclerView() {
+        val manager = GridLayoutManager(this, 2)
+        val decoration = DividerItemDecoration(this, manager.orientation)
+        binding.rvProducts.layoutManager = LinearLayoutManager(this)
+        binding.rvProducts.adapter = recyclerContenedorAdapter
+        binding.rvProducts.addItemDecoration(decoration)
     }
 }

@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.aaa.databinding.ItemProductoBinding
 import com.example.aaa.dataclasses.Producto
 
-class RecyclerListaEjemploAdapter :
-    RecyclerView.Adapter<RecyclerListaEjemploAdapter.ProductoViewHolder>() {
+class RecyclerEditarListasAdapter :
+    RecyclerView.Adapter<RecyclerEditarListasAdapter.ProductoViewHolder>() {
 
     private val listaDatos = mutableListOf<Producto>()
     private var context: Context? = null

@@ -8,8 +8,8 @@ import com.example.aaa.R
 import com.example.aaa.dataclasses.Producto
 import com.example.aaa.databinding.ItemProductoBinding
 
-class ProductoAdapter :
-    RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
+class RecyclerListaEjemploAdapter :
+    RecyclerView.Adapter<RecyclerListaEjemploAdapter.ProductoViewHolder>() {
 
     private val listaDatos = mutableListOf<Producto>()
     private var context: Context? = null
@@ -44,11 +44,5 @@ class ProductoAdapter :
             binding.tvEstado.text = context?.getString(R.string.product_status, data.estado)
             binding.tvLista.text = context?.getString(R.string.product_list, data.lista)
         }
-    }
-
-    fun setData(list: List<Producto>) {
-        listaDatos.clear()
-        listaDatos.addAll(list)
-        notifyDataSetChanged()
     }
 }
