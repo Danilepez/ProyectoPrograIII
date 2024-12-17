@@ -18,6 +18,5 @@ class ListaViewHolder (view: View): RecyclerView.ViewHolder(view) {
         }
     }
     private fun onListaClick(lista: Lista) {
-        // Acción al hacer clic en una lista (por ejemplo, ver los productos)
         Toast.makeText(binding.tvNombreLista.context, "Lista seleccionada: ${lista.nombre}", Toast.LENGTH_SHORT).show()    }
 }

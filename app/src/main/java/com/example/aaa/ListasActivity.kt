@@ -28,11 +28,9 @@ class ListasActivity : AppCompatActivity() {
 
 
         binding.btnPlus.setOnClickListener {
-            // Lógica para agregar una nueva lista
         }
 
         binding.btnMinus.setOnClickListener {
-            // Lógica para eliminar una lista
         }
     }
 
