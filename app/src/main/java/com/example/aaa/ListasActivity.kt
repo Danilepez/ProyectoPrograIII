@@ -1,5 +1,6 @@
 package com.example.aaa
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -23,14 +24,14 @@ class ListasActivity : AppCompatActivity() {
             onListaClick(lista)
         }
 
-
         initRecyclerView()
 
-
         binding.btnPlus.setOnClickListener {
+            // Código para añadir listas (si lo necesitas)
         }
 
         binding.btnMinus.setOnClickListener {
+            // Código para eliminar listas (si lo necesitas)
         }
     }
 
@@ -43,6 +44,10 @@ class ListasActivity : AppCompatActivity() {
     }
 
     private fun onListaClick(lista: Lista) {
-
+        // Navegar a ListaEjemploActivity
+        val intent = Intent(this, ListaEjemploActivity::class.java)
+        intent.putExtra("listaNombre", lista.nombre) // Pasar el nombre de la lista
+        intent.putExtra("listaProductos", ArrayList(lista.listaProductos)) // Pasar la lista de productos
+        startActivity(intent)
     }
 }
