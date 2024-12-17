@@ -20,7 +20,6 @@ class ListasActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         recyclerListasAdapter = RecyclerListasAdapter(Listas.listas) { lista ->
-            // Este es el bloque de código que se ejecuta cuando el usuario hace clic en una lista
             onListaClick(lista)
         }
 
@@ -28,7 +27,6 @@ class ListasActivity : AppCompatActivity() {
         initRecyclerView()
 
 
-        // Configurar botone
         binding.btnPlus.setOnClickListener {
             // Lógica para agregar una nueva lista
         }
