@@ -51,4 +51,6 @@
     <string name="unidades_ejemplo">10 unidades</string>
     <string name="estado_vencido">Estado: Vencido</string>
     <string name="eliminar_del_contenedor">Eliminar del Contenedor</string>
+    <string name="nombre_de_la_lista">Nombre de la Lista</string>
+    <string name="x_productos">X productos</string>
 </resources>

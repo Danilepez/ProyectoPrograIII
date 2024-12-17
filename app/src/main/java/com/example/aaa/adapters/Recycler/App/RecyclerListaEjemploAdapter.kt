@@ -45,10 +45,4 @@ class RecyclerListaEjemploAdapter :
             binding.tvLista.text = context?.getString(R.string.product_list, data.lista)
         }
     }
-
-    fun setData(list: List<Producto>) {
-        listaDatos.clear()
-        listaDatos.addAll(list)
-        notifyDataSetChanged()
-    }
 }

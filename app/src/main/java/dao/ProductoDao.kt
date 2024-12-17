@@ -1,4 +1,5 @@
 import androidx.room.*
+import com.example.aaa.dataclasses.Producto
 
 @Dao
 interface ProductoDao {
