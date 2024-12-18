@@ -16,7 +16,7 @@ class EditarListasActivity : AppCompatActivity() {
         binding = ActivityEditarListasBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        recyclerListaEjemploAdapter = RecyclerListaEjemploAdapter()
+        //recyclerListaEjemploAdapter = RecyclerListaEjemploAdapter()
         binding.recyclerViewProductos.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewProductos.adapter = recyclerListaEjemploAdapter
     }

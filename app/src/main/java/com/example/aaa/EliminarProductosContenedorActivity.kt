@@ -23,7 +23,6 @@ class EliminarProductosContenedorActivity : AppCompatActivity() {
         initRecyclerView()
 
         binding.btnEliminar.setOnClickListener {
-            // Llamamos a la función que eliminará los productos seleccionados
             eliminarProductosSeleccionados()
         }
     }

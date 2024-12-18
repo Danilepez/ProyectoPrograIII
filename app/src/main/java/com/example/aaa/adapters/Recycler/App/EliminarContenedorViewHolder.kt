@@ -12,11 +12,11 @@ class EliminarContenedorViewHolder (view: View) : RecyclerView.ViewHolder(view) 
         binding.tvNombre.text = productoModel.nombre
         binding.tvFecha.text = productoModel.fechaVencimiento
 
-        binding.cbProducto.setOnCheckedChangeListener(null) // Evitar conflictos al reciclar vistas
-        binding.cbProducto.isChecked = false // Inicialmente desmarcado
+        binding.cbProducto.setOnCheckedChangeListener(null)
+        binding.cbProducto.isChecked = false //
 
         binding.cbProducto.setOnCheckedChangeListener { _, isChecked ->
-            // Informar a la actividad principal sobre la selección
+
             onSelectionChanged(productoModel, isChecked)
         }
     }

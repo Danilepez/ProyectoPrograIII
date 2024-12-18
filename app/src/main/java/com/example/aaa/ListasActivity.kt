@@ -2,12 +2,16 @@ package com.example.aaa
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.aaa.adapters.Recycler.App.RecyclerListaEjemploAdapter
 import com.example.aaa.adapters.RecyclerListasAdapter
 import com.example.aaa.dataclasses.Lista
 import com.example.aaa.databinding.ActivityListasBinding
+import com.example.aaa.room.DatabaseProvider
 import com.example.aaa.singletons.Listas
+import kotlinx.coroutines.launch
 
 class ListasActivity : AppCompatActivity() {
 
@@ -21,6 +25,15 @@ class ListasActivity : AppCompatActivity() {
 
         recyclerListasAdapter = RecyclerListasAdapter(Listas.listas) { lista ->
             onListaClick(lista)
+        }
+
+        // Obtener las listas con sus productos en un hilo en segundo plano
+        lifecycleScope.launch {
+            val listaConProductos = DatabaseProvider.getDatabase(binding.btnPlus.context).listaDao().getAllListas()
+            // Ahora tenemos una lista de ListaConProductos, la pasamos al adaptador
+            recyclerListasAdapter = RecyclerListasAdapter(Listas.listas) { lista ->
+                onListaClick(lista)
+            }
         }
 
 

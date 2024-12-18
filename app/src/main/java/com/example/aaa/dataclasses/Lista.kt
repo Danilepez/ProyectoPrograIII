@@ -1,8 +1,10 @@
 package com.example.aaa.dataclasses
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-
+@Entity(tableName = "Listas")
 data class Lista(
-    val nombre: String,
-    val listaProductos: MutableList<Producto>
+    @PrimaryKey(autoGenerate = true) val lista_id: Int = 0, // Clave primaria
+    val nombre: String
 )

@@ -32,9 +32,4 @@ class RecyclerEditarListasAdapter :
             binding.tvNombre.text = data.nombre
         }
     }
-    fun addDataToList(list: List<Producto>) {
-        listaDatos.clear()
-        listaDatos.addAll(list)
-        notifyDataSetChanged()
-    }
 }

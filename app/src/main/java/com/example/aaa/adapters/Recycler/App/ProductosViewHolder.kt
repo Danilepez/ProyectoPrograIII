@@ -8,7 +8,6 @@ import com.example.aaa.dataclasses.Producto
 
 class ProductosViewHolder (view: View): RecyclerView.ViewHolder(view) {
 
-    private var showDetails: Boolean = false // Controla la visibilidad de los detalles
     val binding = ItemProductoBinding.bind(view)
 
     fun render(productoModel: Producto, showDetails: Boolean) {

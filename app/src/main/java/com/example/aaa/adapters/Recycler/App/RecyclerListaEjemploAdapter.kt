@@ -7,42 +7,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.aaa.R
 import com.example.aaa.dataclasses.Producto
 import com.example.aaa.databinding.ItemProductoBinding
+import com.example.aaa.dataclasses.ListaConProductos
 
-class RecyclerListaEjemploAdapter :
-    RecyclerView.Adapter<RecyclerListaEjemploAdapter.ProductoViewHolder>() {
+class RecyclerListaEjemploAdapter(
+    private val listaConProductos: List<ListaConProductos>,  // Ahora manejamos ListaConProductos
+) : RecyclerView.Adapter<ListaViewHolder>() {
 
-    private val listaDatos = mutableListOf<Producto>()
-    private var context: Context? = null
-
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ProductoViewHolder {
-        context = parent.context
-        return ProductoViewHolder(
-            ItemProductoBinding.inflate(
-                LayoutInflater.from(context),
-                parent,
-                false
-            )
-        )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListaViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        return ListaViewHolder(layoutInflater.inflate(R.layout.item_lista, parent, false))
     }
 
-    override fun onBindViewHolder(holder: ProductoViewHolder, position: Int) {
-        holder.bind(listaDatos[position])
+    override fun onBindViewHolder(holder: ListaViewHolder, position: Int) {
+        // Pasamos la ListaConProductos al ViewHolder
+        holder.render(listaConProductos[position])
     }
 
-    override fun getItemCount(): Int = listaDatos.size
-
-    inner class ProductoViewHolder(private val binding: ItemProductoBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(data: Producto) {
-            binding.tvNombre.text = data.nombre
-            binding.tvFecha.text = context?.getString(R.string.product_expiration_date, data.fechaVencimiento)
-            binding.tvCantidad.text = context?.getString(R.string.product_quantity, data.cantidad)
-            binding.tvEstado.text = context?.getString(R.string.product_status, data.estado)
-            binding.tvLista.text = context?.getString(R.string.product_list, data.lista)
-        }
-    }
+    override fun getItemCount(): Int = listaConProductos.size
 }
+

@@ -34,10 +34,4 @@ class RecyclerVencidosAdapter :
             binding.tvFecha.text = data.fechaVencimiento
         }
     }
-
-    fun addDataToList(list: List<Producto>) {
-        listaDatos.clear()
-        listaDatos.addAll(list)
-        notifyDataSetChanged()
-    }
 }
