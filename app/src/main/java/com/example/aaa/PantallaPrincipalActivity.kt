@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aaa.databinding.ActivityPantallaPrincipalBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.example.aaa.ListasActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 

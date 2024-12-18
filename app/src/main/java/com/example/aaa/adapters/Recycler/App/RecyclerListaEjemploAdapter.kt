@@ -1,29 +1,33 @@
-package com.example.aaa.adapters.Recycler.App
-
-import android.content.Context
+package com.example.aaa.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.aaa.R
-import com.example.aaa.databinding.ItemEjemploListaBinding
-import com.example.aaa.dataclasses.Producto
 import com.example.aaa.databinding.ItemProductoBinding
-import com.example.aaa.dataclasses.Lista
-import com.example.aaa.singletons.Listas
+import com.example.aaa.dataclasses.Producto
 
-class RecyclerListaEjemploAdapter(private val lista: Lista) : RecyclerView.Adapter<EjemploListaViewHolder>() {
+class RecyclerListaEjemploAdapter(private val productos: List<Producto>) : RecyclerView.Adapter<RecyclerListaEjemploAdapter.ProductoViewHolder>() {
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EjemploListaViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        return EjemploListaViewHolder(layoutInflater.inflate(R.layout.item_ejemplo_lista, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
+        val binding = ItemProductoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ProductoViewHolder(binding.root)
     }
 
-    override fun onBindViewHolder(holder: EjemploListaViewHolder, position: Int) {
-        holder.render(Listas.listas[position])
+    override fun onBindViewHolder(holder: ProductoViewHolder, position: Int) {
+        holder.bind(productos[position])
     }
 
-    override fun getItemCount(): Int = Listas.listas.size
+    override fun getItemCount() = productos.size
 
+    class ProductoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val binding = ItemProductoBinding.bind(view)
+
+        fun bind(producto: Producto) {
+            binding.tvNombre.text = producto.nombre
+            binding.tvLista.text = producto.lista
+            binding.tvFecha.text = producto.fechaVencimiento
+            binding.tvCantidad.text = "Cantidad: ${producto.cantidad}"
+            binding.tvEstado.text = producto.estado
+        }
+    }
 }
