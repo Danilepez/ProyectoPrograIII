@@ -16,7 +16,6 @@ class EliminarContenedorViewHolder (view: View) : RecyclerView.ViewHolder(view) 
         binding.cbProducto.isChecked = false // Inicialmente desmarcado
 
         binding.cbProducto.setOnCheckedChangeListener { _, isChecked ->
-            // Informar a la actividad principal sobre la selección
             onSelectionChanged(productoModel, isChecked)
         }
     }

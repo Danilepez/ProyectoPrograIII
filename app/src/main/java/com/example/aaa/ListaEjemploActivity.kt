@@ -22,27 +22,25 @@ class ListaEjemploActivity : AppCompatActivity() {
         binding = ActivityListaEjemploBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        recyclerListaEjemploAdapter = RecyclerListaEjemploAdapter(mutableListOf())
-
         initRecyclerView()
 
+        cargarListaDesdeIntent()
 
-        val listaNombre = intent.getStringExtra("listaNombre")  // Obtener el nombre de la lista desde el Intent
-        lista = Listas.getListaByName(listaNombre ?: "") ?: Lista("", mutableListOf())  // Buscar la lista en el Singleton
-        if (lista.listaProductos.isNotEmpty()) {
-            // Cargar los productos de la lista
-            setupRecyclerView(lista.listaProductos)
-        } else {
-            // Manejo en caso de que no se encuentre la lista o la lista esté vacía
-            Toast.makeText(this, "Lista no #$&$#encontrada o está vacía%#%#%##%#", Toast.LENGTH_SHORT).show()
+        binding.btnModificar.setOnClickListener {
+            val intent = intent
+            intent.setClass(this, EditarListasActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnCheck.setOnClickListener {
         }
     }
 
     private fun initRecyclerView() {
+        recyclerListaEjemploAdapter = RecyclerListaEjemploAdapter(mutableListOf())
         val manager = LinearLayoutManager(this)
         val decoration = DividerItemDecoration(this, manager.orientation)
         binding.recyclerViewProductos.layoutManager = manager
-            binding.recyclerViewProductos.adapter = recyclerListaEjemploAdapter
+        binding.recyclerViewProductos.adapter = recyclerListaEjemploAdapter
         binding.recyclerViewProductos.addItemDecoration(decoration)
 
     }
@@ -50,5 +48,16 @@ class ListaEjemploActivity : AppCompatActivity() {
     private fun setupRecyclerView(productos: List<Producto>) {
         val adapter = RecyclerListaEjemploAdapter(productos)
         binding.recyclerViewProductos.adapter = adapter
+    }
+
+    private fun cargarListaDesdeIntent() {
+        val listaNombre = intent.getStringExtra("listaNombre")  // Obtener el nombre de la lista desde el Intent
+        lista = Listas.getListaByName(listaNombre ?: "") ?: Lista("", mutableListOf())  // Buscar la lista en el Singleton
+
+        if (lista.listaProductos.isNotEmpty()) {
+            setupRecyclerView(lista.listaProductos)
+        } else {
+            Toast.makeText(this, "Lista no encontrada o está vacía", Toast.LENGTH_SHORT).show()
+        }
     }
 }
