@@ -10,12 +10,9 @@ import com.example.aaa.adapters.RecyclerEditarListasAdapter
 import com.example.aaa.databinding.ActivityEditarListasBinding
 import com.example.aaa.singletons.Listas
 import androidx.recyclerview.widget.RecyclerView
-import com.example.aaa.R
-import com.example.aaa.adapters.Recycler.App.RecyclerListaEjemploAdapter
 import com.example.aaa.adapters.RecyclerListaEjemploAdapter
 import com.example.aaa.dataclasses.Lista
 import com.example.aaa.dataclasses.Producto
-import com.example.aaa.singletons.Listas
 
 class EditarListasActivity : AppCompatActivity() {
 
