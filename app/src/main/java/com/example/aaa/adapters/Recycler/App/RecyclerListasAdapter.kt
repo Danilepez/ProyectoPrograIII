@@ -7,10 +7,7 @@ import com.example.aaa.R
 import com.example.aaa.dataclasses.Lista
 import com.example.aaa.adapters.Recycler.App.ListaViewHolder
 
-class RecyclerListasAdapter(
-    private val listas: List<Lista>,
-    private val onItemClick: (Lista) -> Unit
-) : RecyclerView.Adapter<ListaViewHolder>() {
+class RecyclerListasAdapter(private val listas: List<Lista>) : RecyclerView.Adapter<ListaViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListaViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -20,9 +17,6 @@ class RecyclerListasAdapter(
     override fun onBindViewHolder(holder: ListaViewHolder, position: Int) {
         val lista = listas[position]
         holder.render(lista)
-        holder.itemView.setOnClickListener {
-            onItemClick(lista)
-        }
     }
 
     override fun getItemCount(): Int = listas.size

@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.aaa.adapters.Recycler.App.ListaViewHolder.Companion.ID_LISTA
+import com.example.aaa.adapters.Recycler.App.ListaViewHolder.Companion.NOMBRE_LISTA
 import com.example.aaa.adapters.RecyclerEditarListasAdapter
 import com.example.aaa.databinding.ActivityEditarListasBinding
 import com.example.aaa.singletons.Listas
@@ -13,37 +15,48 @@ class EditarListasActivity : AppCompatActivity() {
 
 
     private lateinit var binding: ActivityEditarListasBinding
-    private lateinit var recyclerEditarListasAdapter: RecyclerEditarListasAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditarListasBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        recyclerEditarListasAdapter = RecyclerEditarListasAdapter(Listas.listas[0].listaProductos)
+        val idLista = this.intent.getIntExtra(ID_LISTA, -1)
 
-        initRecyclerView()
+
+
+        initRecyclerView(idLista)
 
 
 
 
 
         binding.btnPlus.setOnClickListener {
-            val intent = Intent(this, AgregarProductoListaActivity::class.java)
-            startActivity(intent)
+            val intentToEdit = Intent(this, AgregarProductoListaActivity::class.java)
+
+            intentToEdit.putExtra(ID_LISTA, idLista)
+
+
+            startActivity(intentToEdit)
         }
 
         binding.btnMinus.setOnClickListener {
-            val intent = Intent(this, EliminarProductoListaActivity::class.java)
-            startActivity(intent)
+            val intentToEdit = Intent(this, EliminarProductoListaActivity::class.java)
+
+            val idLista = this.intent.getIntExtra(ID_LISTA, -1)
+            intentToEdit.putExtra(ID_LISTA, idLista)
+
+
+            startActivity(intentToEdit)
         }
     }
 
-    private fun initRecyclerView() {
+    private fun initRecyclerView(idLista: Int) {
         val manager = LinearLayoutManager(this)
         val decoration = DividerItemDecoration(this, manager.orientation)
+
         binding.rvModificar.layoutManager = manager
-        binding.rvModificar.adapter = recyclerEditarListasAdapter
+        binding.rvModificar.adapter = RecyclerEditarListasAdapter(Listas.listas[idLista].listaProductos)
         binding.rvModificar.addItemDecoration(decoration)
 
     }

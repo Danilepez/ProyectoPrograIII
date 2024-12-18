@@ -5,8 +5,9 @@ import com.example.aaa.dataclasses.Lista
 import com.example.aaa.dataclasses.Producto
 
 object Listas {
-    val listas = mutableListOf(
+    var listas = mutableListOf(
         Lista(
+            id = 0,
             nombre = "Lista 1",
             listaProductos = mutableListOf(
                 Producto(
@@ -36,6 +37,7 @@ object Listas {
             )
         ),
         Lista(
+            id = 1,
             nombre = "Lista 2",
             listaProductos = mutableListOf(
                 Producto(
@@ -49,10 +51,12 @@ object Listas {
             )
         ),
         Lista(
+            id = 2,
             nombre = "Lista 3",
             listaProductos = mutableListOf()
         ),
         Lista(
+            id = 3,
             nombre = "Lista 4",
             listaProductos = mutableListOf(
                 Producto(
@@ -66,6 +70,7 @@ object Listas {
             )
         ),
         Lista(
+            id = 4,
             nombre = "Lista 5",
             listaProductos = mutableListOf(
                 Producto(

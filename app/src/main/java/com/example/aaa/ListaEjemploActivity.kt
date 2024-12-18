@@ -1,21 +1,22 @@
 package com.example.aaa
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.aaa.adapters.Recycler.App.ListaViewHolder.Companion.ID_LISTA
+import com.example.aaa.adapters.Recycler.App.ListaViewHolder.Companion.NOMBRE_LISTA
 import com.example.aaa.adapters.RecyclerListaEjemploAdapter
 import com.example.aaa.databinding.ActivityListaEjemploBinding
-import com.example.aaa.dataclasses.Lista
 import com.example.aaa.dataclasses.Producto
 import com.example.aaa.singletons.Listas
 
 class ListaEjemploActivity : AppCompatActivity() {
 
-    private lateinit var lista: Lista
-    private lateinit var recyclerListaEjemploAdapter: RecyclerListaEjemploAdapter
     private lateinit var binding: ActivityListaEjemploBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,38 +27,51 @@ class ListaEjemploActivity : AppCompatActivity() {
 
         cargarListaDesdeIntent()
 
+
+        //binding.titulo.text = nameLista.toString()
+
         binding.btnModificar.setOnClickListener {
-            val intent = intent
-            intent.setClass(this, EditarListasActivity::class.java)
-            startActivity(intent)
+            val intentToEdit = Intent(this, EditarListasActivity::class.java)
+
+            val nombreLista = this.intent.getIntExtra(NOMBRE_LISTA, -1)
+            val idLista = this.intent.getIntExtra(ID_LISTA, -1)
+            intentToEdit.putExtra(ID_LISTA, idLista)
+            intentToEdit.putExtra(NOMBRE_LISTA, nombreLista)
+
+
+            startActivity(intentToEdit)
+            Toast.makeText(this, "Correcto", Toast.LENGTH_SHORT).show()
+
+
         }
         binding.btnCheck.setOnClickListener {
         }
     }
 
     private fun initRecyclerView() {
-        recyclerListaEjemploAdapter = RecyclerListaEjemploAdapter(mutableListOf())
         val manager = LinearLayoutManager(this)
         val decoration = DividerItemDecoration(this, manager.orientation)
         binding.recyclerViewProductos.layoutManager = manager
-        binding.recyclerViewProductos.adapter = recyclerListaEjemploAdapter
         binding.recyclerViewProductos.addItemDecoration(decoration)
 
     }
 
     private fun setupRecyclerView(productos: List<Producto>) {
-        val adapter = RecyclerListaEjemploAdapter(productos)
-        binding.recyclerViewProductos.adapter = adapter
+        binding.recyclerViewProductos.adapter = RecyclerListaEjemploAdapter(productos)
     }
 
     private fun cargarListaDesdeIntent() {
-        val listaNombre = intent.getStringExtra("listaNombre")  // Obtener el nombre de la lista desde el Intent
-        lista = Listas.getListaByName(listaNombre ?: "") ?: Lista("", mutableListOf())  // Buscar la lista en el Singleton
+        val listaNombre = this.intent.getStringExtra(NOMBRE_LISTA)  // Obtener el nombre de la lista desde el Intent
+        val lista = Listas.getListaByName(listaNombre ?: "")// Buscar la lista en el Singleton
 
-        if (lista.listaProductos.isNotEmpty()) {
-            setupRecyclerView(lista.listaProductos)
-        } else {
-            Toast.makeText(this, "Lista no encontrada o está vacía", Toast.LENGTH_SHORT).show()
+        if (lista != null) {
+            if (lista.listaProductos.isNotEmpty()) {
+                if (lista != null) {
+                    setupRecyclerView(lista.listaProductos)
+                }
+            } else {
+                Toast.makeText(this, "Lista no encontrada o está vacía", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
