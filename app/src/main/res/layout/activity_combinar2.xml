@@ -49,7 +49,7 @@
 
         <!-- RecyclerView para las listas -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewLists"
+            android:id="@+id/recyclerViewCombinar"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:clipToPadding="false"

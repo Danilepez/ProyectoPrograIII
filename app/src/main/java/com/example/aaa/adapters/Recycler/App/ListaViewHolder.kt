@@ -1,7 +1,6 @@
 package com.example.aaa.adapters.Recycler.App
 
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aaa.databinding.ItemListaBinding
 import com.example.aaa.dataclasses.Lista
@@ -14,17 +13,19 @@ class ListaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         binding.tvCantidadProductos.text = "Cantidad: ${listaModel.listaProductos.size} productos"
 
-        binding.root.setOnClickListener {
+        /*binding.root.setOnClickListener {
             val position = adapterPosition
             if (position != RecyclerView.NO_POSITION) {
                 val productos = listaModel.listaProductos
                 if (productos.isNotEmpty()) {
+                    println("entro al if")
                     Toast.makeText(
                         binding.root.context,
                         "Posición clickeada: $position\nProductos: ${productos.joinToString { it.nombre }}",
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
+                    println("entro al else")
                     Toast.makeText(
                         binding.root.context,
                         "La lista seleccionada está vacía",
@@ -32,6 +33,6 @@ class ListaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                     ).show()
                 }
             }
-        }
+        }*/
     }
 }
