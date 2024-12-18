@@ -79,5 +79,9 @@ object Listas {
             )
         )
     )
+
+    fun getListaByName(nombre: String): Lista? {
+        return listas.find { it.nombre == nombre }
+    }
 }
 
