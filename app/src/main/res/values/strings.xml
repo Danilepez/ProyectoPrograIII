@@ -53,4 +53,5 @@
     <string name="eliminar_del_contenedor">Eliminar del Contenedor</string>
     <string name="nombre_de_la_lista">Nombre de la Lista</string>
     <string name="x_productos">X productos</string>
+    <string name="agregar_a_la_lista">Agregar a la lista</string>
 </resources>

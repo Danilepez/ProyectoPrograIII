@@ -13,6 +13,12 @@
         android:theme="@style/Theme.AAA"
         tools:targetApi="31">
         <activity
+            android:name=".EliminarProductoListaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AgregarProductoListaActivity"
+            android:exported="false" />
+        <activity
             android:name=".CombinarActivity2"
             android:exported="false" />
         <activity
