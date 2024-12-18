@@ -21,7 +21,7 @@ class RecyclerListasAdapter(
         val lista = listas[position]
         holder.render(lista)
         holder.itemView.setOnClickListener {
-            onItemClick(lista)  // Pasar la lista seleccionada
+            onItemClick(lista)
         }
     }
 

@@ -10,7 +10,9 @@ class ListaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val binding = ItemListaBinding.bind(view)
 
     fun render(listaModel: Lista) {
-        binding.tvNombreLista.text = listaModel.nombre // Mostrar nombre de la lista
+        binding.tvNombreLista.text = listaModel.nombre
+
+        binding.tvCantidadProductos.text = "Cantidad: ${listaModel.listaProductos.size} productos"
 
         binding.root.setOnClickListener {
             val position = adapterPosition
