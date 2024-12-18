@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.aaa.adapters.Recycler.App.ListaViewHolder.Companion.ID_LISTA
 import com.example.aaa.adapters.Recycler.App.RecyclerAgregarProductoListaAdapter
 import com.example.aaa.databinding.ActivityAgregarProductoListaBinding
-import com.example.aaa.dataclasses.Lista
 import com.example.aaa.dataclasses.Producto
 import com.example.aaa.singletons.Listas
 import com.example.aaa.singletons.ProductosComunes
@@ -26,13 +25,11 @@ class AgregarProductoListaActivity : AppCompatActivity() {
         initRecyclerView()
 
         binding.btnAgregar.setOnClickListener {
-            val idLista = this.intent.getIntExtra(ID_LISTA, -1)
-
+            val idLista = this.intent.getIntExtra(ID_LISTA, 0)
+            println(idLista)
             ProductosComunes.productosComunesList.forEach { producto ->
                 if (producto.cantidad > 0) {
-                    val existingProduct = Listas.listas[idLista].listaProductos.find {
-                        it.nombre == producto.nombre && it.fechaVencimiento == producto.fechaVencimiento
-                    }
+                    val existingProduct = Listas.getListaByName((Listas.listas[idLista].nombre))?.listaProductos?.find { it.nombre == producto.nombre }
 
                     if (existingProduct != null) {
                         Toast.makeText(this, "Prueba", Toast.LENGTH_SHORT).show()
@@ -57,8 +54,9 @@ class AgregarProductoListaActivity : AppCompatActivity() {
 
 
 
-            val intent = Intent(this, EditarListasActivity::class.java)
-            startActivity(intent)
+            val intentEditar = Intent(this, EditarListasActivity::class.java)
+            intentEditar.putExtra(ID_LISTA, idLista)
+            startActivity(intentEditar)
         }
     }
 

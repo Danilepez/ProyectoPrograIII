@@ -21,7 +21,7 @@ class EditarListasActivity : AppCompatActivity() {
         binding = ActivityEditarListasBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val idLista = this.intent.getIntExtra(ID_LISTA, -1)
+        val idLista = this.intent.getIntExtra(ID_LISTA, 0)
 
 
 
@@ -43,9 +43,8 @@ class EditarListasActivity : AppCompatActivity() {
         binding.btnMinus.setOnClickListener {
             val intentToEdit = Intent(this, EliminarProductoListaActivity::class.java)
 
-            val idLista = this.intent.getIntExtra(ID_LISTA, -1)
+            val idLista = this.intent.getIntExtra(ID_LISTA, 0)
             intentToEdit.putExtra(ID_LISTA, idLista)
-
 
             startActivity(intentToEdit)
         }
