@@ -33,7 +33,8 @@ class ListasActivity : AppCompatActivity() {
         }
 
         binding.btnMinus.setOnClickListener {
-
+            // Lógica para eliminar una lista
+            //eliminarLista()
         }
     }
 

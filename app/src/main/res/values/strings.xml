@@ -54,4 +54,5 @@
     <string name="nombre_de_la_lista">Nombre de la Lista</string>
     <string name="x_productos">X productos</string>
     <string name="agregar_a_la_lista">Agregar a la lista</string>
+    <string name="eliminar_lista">Eliminar lista(s)</string>
 </resources>

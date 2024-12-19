@@ -21,3 +21,4 @@ class RecyclerListasAdapter(private val listas: List<Lista>) : RecyclerView.Adap
 
     override fun getItemCount(): Int = listas.size
 }
+

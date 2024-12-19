@@ -64,9 +64,10 @@
             android:text="@string/combinar"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toEndOf="@id/btn_modificar" />
 
         <Button
             android:id="@+id/btn_modificar"
@@ -78,21 +79,10 @@
             android:text="@string/modificar"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/btn_eliminsr"
-            style="@style/Ese"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:backgroundTint="?attr/colorError"
-            android:text="@string/eliminar_texto"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_combi"/>
 
         <Button
             android:id="@+id/btn_check"

@@ -7,13 +7,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aaa.adapters.Recycler.App.RecyclerEliminarContenedorAdapter
 import com.example.aaa.databinding.ActivityEliminarProductosContenedorBinding
 import com.example.aaa.singletons.ProductosContenedor
-import com.example.aaa.singletons.ProductosEliminarContenedor
+import com.example.aaa.dataclasses.Producto
 import android.widget.Toast
 
 class EliminarProductosContenedorActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEliminarProductosContenedorBinding
     private lateinit var adapter: RecyclerEliminarContenedorAdapter
     private val productos = ProductosContenedor.productosContenedor
+    private val productosSeleccionados = mutableListOf<Producto>() // Variable local para almacenar los productos seleccionados
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +23,7 @@ class EliminarProductosContenedorActivity : AppCompatActivity() {
 
         initRecyclerView()
 
+        binding.btnEliminar.isEnabled = false
         binding.btnEliminar.setOnClickListener {
             // Llamamos a la función que eliminará los productos seleccionados
             eliminarProductosSeleccionados()
@@ -32,27 +34,27 @@ class EliminarProductosContenedorActivity : AppCompatActivity() {
         // Inicializamos el adaptador con el callback de selección
         adapter = RecyclerEliminarContenedorAdapter(productos) { producto, isChecked ->
             if (isChecked) {
-                // Si está seleccionado, agregar al singleton de productos a eliminar
-                ProductosEliminarContenedor.productosEliminarContenedor.add(producto)
+                // Si está seleccionado, agregarlo a la lista local de productos seleccionados
+                productosSeleccionados.add(producto)
             } else {
-                // Si está deseleccionado, eliminar del singleton
-                ProductosEliminarContenedor.productosEliminarContenedor.remove(producto)
+                // Si está deseleccionado, eliminarlo de la lista local
+                productosSeleccionados.remove(producto)
             }
 
             // Habilitar el botón de eliminar solo si hay productos seleccionados
-            binding.btnEliminar.isEnabled = ProductosEliminarContenedor.productosEliminarContenedor.isNotEmpty()
+            binding.btnEliminar.isEnabled = productosSeleccionados.isNotEmpty()
         }
         binding.recyclerViewEliminarProductosContenedor.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewEliminarProductosContenedor.adapter = adapter
     }
 
     private fun eliminarProductosSeleccionados() {
-        if (ProductosEliminarContenedor.productosEliminarContenedor.isNotEmpty()) {
-            ProductosContenedor.productosContenedor.removeAll { producto ->
-                ProductosEliminarContenedor.productosEliminarContenedor.contains(producto)
+        if (productosSeleccionados.isNotEmpty()) {
+            productos.removeAll { producto ->
+                productosSeleccionados.contains(producto)
             }
 
-            ProductosEliminarContenedor.productosEliminarContenedor.clear()
+            productosSeleccionados.clear()
 
             Toast.makeText(this, "Productos eliminados", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, ContenedorActivity::class.java)
