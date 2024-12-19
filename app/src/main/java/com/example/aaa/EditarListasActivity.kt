@@ -22,6 +22,7 @@ class EditarListasActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val idLista = this.intent.getIntExtra(ID_LISTA, 0)
+        val nombreLista = this.intent.getStringExtra(NOMBRE_LISTA)
 
 
 
@@ -43,8 +44,8 @@ class EditarListasActivity : AppCompatActivity() {
         binding.btnMinus.setOnClickListener {
             val intentToEdit = Intent(this, EliminarProductoListaActivity::class.java)
 
-            val idLista = this.intent.getIntExtra(ID_LISTA, 0)
             intentToEdit.putExtra(ID_LISTA, idLista)
+            intentToEdit.putExtra(NOMBRE_LISTA, nombreLista)
 
             startActivity(intentToEdit)
         }

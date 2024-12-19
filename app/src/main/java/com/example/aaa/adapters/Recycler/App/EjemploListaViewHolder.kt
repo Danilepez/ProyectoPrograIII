@@ -9,7 +9,15 @@ import com.example.aaa.dataclasses.Producto
 class EjemploListaViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     val binding = ItemEjemploListaBinding.bind(view)
 
-    fun render(data: Producto) {
-        binding.tvNombre.text = data.nombre
+    fun render(
+        producto: Producto,
+        onSelectionChanged: (Producto, Boolean) -> Unit
+    ) {
+        binding.tvNombre.text = producto.nombre
+        binding.cbProducto.isChecked = false
+
+        binding.cbProducto.setOnCheckedChangeListener { _, isChecked ->
+            onSelectionChanged(producto, isChecked)
+        }
     }
 }
