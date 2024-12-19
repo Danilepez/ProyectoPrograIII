@@ -66,37 +66,4 @@ class ListasActivity : AppCompatActivity() {
         recyclerListasAdapter = RecyclerListasAdapter(Listas.listas)
         binding.recyclerViewLists.layoutManager = LinearLayoutManager(this@ListasActivity)
     }
-
-    /*private fun agregarLista(nombreLista: String = "") {
-        if (nombreLista.isNotEmpty()) {
-            // Crear una nueva lista directamente (sin diálogo)
-            val ultimoId = Listas.listas.lastOrNull()?.id ?: 0
-            val nuevoId = ultimoId + 1
-            val nuevaLista = Lista(nuevoId, nombre = nombreLista, listaProductos = mutableListOf())
-            Listas.listas.add(nuevaLista)
-            recyclerListasAdapter.notifyItemInserted(Listas.listas.size - 1)
-        } else {
-            // Mostrar el cuadro de diálogo si no se proporciona un nombre
-            val ultimoId = Listas.listas.lastOrNull()?.id ?: 0
-            val nuevoId = ultimoId + 1
-            val input = EditText(this)
-            val dialog = AlertDialog.Builder(this)
-                .setTitle("Ingrese el nombre de la nueva lista")
-                .setView(input)
-                .setPositiveButton("Agregar") { _, _ ->
-                    val listaNombre = input.text.toString()
-                    if (listaNombre.isNotEmpty()) {
-                        val nuevaLista = Lista(nuevoId, nombre = listaNombre, listaProductos = mutableListOf())
-                        Listas.listas.add(nuevaLista)
-                        recyclerListasAdapter.notifyItemInserted(Listas.listas.size - 1)
-                    } else {
-                        Toast.makeText(this, "Por favor, ingrese un nombre válido", Toast.LENGTH_SHORT).show()
-                    }
-                }
-                .setNegativeButton("Cancelar", null)
-                .create()
-
-            dialog.show()
-        }
-    }*/
 }
