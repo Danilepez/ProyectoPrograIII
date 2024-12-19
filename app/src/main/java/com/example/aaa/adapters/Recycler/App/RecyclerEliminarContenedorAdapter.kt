@@ -23,3 +23,4 @@ class RecyclerEliminarContenedorAdapter(private val productos: List<Producto>,
     override fun getItemCount(): Int = productos.size
 }
 
+

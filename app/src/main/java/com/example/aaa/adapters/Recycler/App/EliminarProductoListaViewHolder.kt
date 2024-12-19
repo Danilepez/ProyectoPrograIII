@@ -1,5 +1,6 @@
 package com.example.aaa.adapters.Recycler.App
 
+
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aaa.databinding.ItemEliminarProductoListaBinding
@@ -11,7 +12,7 @@ class EliminarProductoListaViewHolder(view: View) : RecyclerView.ViewHolder(view
 
     fun render(productoModel: Producto, onSelectionChanged: (Producto, Boolean) -> Unit) {
         binding.tvNombre.text = productoModel.nombre
-        binding.tvFecha.text = productoModel.fechaVencimiento
+        binding.tvFecha.text = productoModel.fechaVencimiento.toString()
         binding.tvCantidad.text = productoModel.cantidad.toString()
         binding.tvLista.text = productoModel.lista
         binding.tvEstado.text = productoModel.estado

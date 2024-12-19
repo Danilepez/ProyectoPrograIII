@@ -13,6 +13,15 @@
         android:theme="@style/Theme.AAA"
         tools:targetApi="31">
         <activity
+            android:name=".CombinarActivity3"
+            android:exported="false" />
+        <activity
+            android:name=".CombinarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EliminarListaActivity"
+            android:exported="false" />
+        <activity
             android:name=".EliminarProductoListaActivity"
             android:exported="false" />
         <activity
@@ -41,9 +50,6 @@
             android:exported="false" />
         <activity
             android:name=".ContenedorActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CrearContenedorActivity"
             android:exported="false" />
         <activity
             android:name=".EditarListasActivity"

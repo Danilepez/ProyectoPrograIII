@@ -30,7 +30,8 @@ class RecyclerVencenProntoAdapter : RecyclerView.Adapter<RecyclerVencenProntoAda
 
     class VencenProntoViewHolder(private val binding: ItemVencenProntoBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(producto: Producto) {
-            binding.tvNombre.text = producto.nombre // Mostrar solo el nombre
+            binding.tvNombre.text = producto.nombre
+            binding.tvFecha.text = producto.fechaVencimiento.toString()
         }
     }
 }
