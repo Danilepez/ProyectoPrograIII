@@ -50,6 +50,16 @@ class ListaEjemploActivity : AppCompatActivity() {
 
         binding.btnCheck.setOnClickListener {
             eliminarSeleccionados(idLista)
+            initRecyclerView(idLista)
+        }
+
+        binding.btnCombi.setOnClickListener {
+            val intentToCombi = Intent(this, CombinarActivity::class.java)
+
+            intentToCombi.putExtra((NOMBRE_LISTA), nombreLista)
+            intentToCombi.putExtra(ID_LISTA, idLista)
+
+            startActivity(intentToCombi)
         }
 
     }

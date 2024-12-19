@@ -34,7 +34,6 @@ class AgregarProductoListaActivity : AppCompatActivity() {
                     val existingProduct = Listas.getListaByName((Listas.listas[idLista].nombre))?.listaProductos?.find { it.nombre == producto.nombre }
 
                     if (existingProduct != null) {
-                        Toast.makeText(this, "Prueba", Toast.LENGTH_SHORT).show()
                         existingProduct.cantidad += producto.cantidad
                     } else {
                         val productoTemp = Producto(

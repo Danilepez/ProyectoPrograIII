@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aaa.adapters.RecyclerListasAdapter
 import com.example.aaa.databinding.ActivityListasBinding
-import com.example.aaa.dataclasses.Lista
 import com.example.aaa.singletons.Listas
+import com.example.aaa.singletons.ListasHelper
 
 class ListasActivity : AppCompatActivity() {
 
@@ -25,6 +25,8 @@ class ListasActivity : AppCompatActivity() {
         setContentView(binding.root)
         initRecyclerView()
 
+        ListasHelper.adapter = recyclerListasAdapter
+
         binding.recyclerViewLists.apply {
             adapter = recyclerListasAdapter
             layoutManager = LinearLayoutManager(this@ListasActivity)
@@ -33,43 +35,68 @@ class ListasActivity : AppCompatActivity() {
         binding.titulo.text = "Listas"
 
         binding.btnPlus.setOnClickListener {
-            agregarLista()
+            val input = EditText(this)
+            AlertDialog.Builder(this)
+                .setTitle("Ingrese el nombre de la nueva lista")
+                .setView(input)
+                .setPositiveButton("Agregar") { _, _ ->
+                    val listaNombre = input.text.toString()
+                    if (listaNombre.isNotEmpty()) {
+                        ListasHelper.agregarLista(listaNombre)
+                        recyclerListasAdapter.notifyItemInserted(Listas.listas.size - 1)
+                    } else {
+                        Toast.makeText(this, "Por favor, ingrese un nombre válido", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                .setNegativeButton("Cancelar", null)
+                .create()
+                .show()
         }
+
 
         binding.btnMinus.setOnClickListener {
             val intent = Intent(this, EliminarListaActivity::class.java)
             startActivity(intent)
         }
 
+
     }
 
     private fun initRecyclerView() {
         recyclerListasAdapter = RecyclerListasAdapter(Listas.listas)
+        binding.recyclerViewLists.layoutManager = LinearLayoutManager(this@ListasActivity)
     }
-    private fun agregarLista() {
-        // Mostrar un cuadro de texto para ingresar el nombre de la nueva lista
-        val ultimoId = Listas.listas.lastOrNull()?.id ?: 0
-        val nuevoId = ultimoId + 1
-        val input = EditText(this)
-        val dialog = AlertDialog.Builder(this)
-            .setTitle("Ingrese el nombre de la nueva lista")
-            .setView(input)
-            .setPositiveButton("Agregar") { _, _ ->
-                val listaNombre = input.text.toString()
-                if (listaNombre.isNotEmpty()) {
-                    // Crear una nueva lista con el nombre proporcionado
-                    val nuevaLista = Lista(nuevoId ,nombre = listaNombre, listaProductos = mutableListOf())
-                    // Agregar la nueva lista a la lista de listas
-                    Listas.listas.add(nuevaLista)
-                    // Notificar al adaptador para que actualice el RecyclerView
-                    recyclerListasAdapter.notifyItemInserted(Listas.listas.size - 1)
-                } else {
-                    Toast.makeText(this, "Por favor, ingrese un nombre válido", Toast.LENGTH_SHORT).show()
-                }
-            }
-            .setNegativeButton("Cancelar", null)
-            .create()
 
-        dialog.show()
-    }
+    /*private fun agregarLista(nombreLista: String = "") {
+        if (nombreLista.isNotEmpty()) {
+            // Crear una nueva lista directamente (sin diálogo)
+            val ultimoId = Listas.listas.lastOrNull()?.id ?: 0
+            val nuevoId = ultimoId + 1
+            val nuevaLista = Lista(nuevoId, nombre = nombreLista, listaProductos = mutableListOf())
+            Listas.listas.add(nuevaLista)
+            recyclerListasAdapter.notifyItemInserted(Listas.listas.size - 1)
+        } else {
+            // Mostrar el cuadro de diálogo si no se proporciona un nombre
+            val ultimoId = Listas.listas.lastOrNull()?.id ?: 0
+            val nuevoId = ultimoId + 1
+            val input = EditText(this)
+            val dialog = AlertDialog.Builder(this)
+                .setTitle("Ingrese el nombre de la nueva lista")
+                .setView(input)
+                .setPositiveButton("Agregar") { _, _ ->
+                    val listaNombre = input.text.toString()
+                    if (listaNombre.isNotEmpty()) {
+                        val nuevaLista = Lista(nuevoId, nombre = listaNombre, listaProductos = mutableListOf())
+                        Listas.listas.add(nuevaLista)
+                        recyclerListasAdapter.notifyItemInserted(Listas.listas.size - 1)
+                    } else {
+                        Toast.makeText(this, "Por favor, ingrese un nombre válido", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                .setNegativeButton("Cancelar", null)
+                .create()
+
+            dialog.show()
+        }
+    }*/
 }
