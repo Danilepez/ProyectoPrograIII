@@ -15,7 +15,7 @@ JDK (Java Development Kit).
 Un dispositivo Android o emulador configurado.
 Pasos de instalación:
 Clona este repositorio:
-git clone https://github.com/usuario/fridge-fresh.git
+git clone https://github.com/Danilepez/ProyectoPrograIII.git
 Abre el proyecto en Android Studio.
 Sincroniza el proyecto con Gradle.
 Configura un emulador Android o conecta un dispositivo físico.
@@ -59,9 +59,6 @@ Tecnologías Usadas
 Lenguaje: Kotlin, xml
 IDE: Android Studio
 Bases de datos: SQLite (almacenamiento offline)
-
-Licencia
-Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 
 Autores
 Diego Gomez
