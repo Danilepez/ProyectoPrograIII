@@ -13,6 +13,12 @@
         android:theme="@style/Theme.AAA"
         tools:targetApi="31">
         <activity
+            android:name=".CombinarActivity3"
+            android:exported="false" />
+        <activity
+            android:name=".CombinarActivity"
+            android:exported="false" />
+        <activity
             android:name=".EliminarListaActivity"
             android:exported="false" />
         <activity
