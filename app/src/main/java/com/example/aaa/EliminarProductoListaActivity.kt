@@ -32,6 +32,7 @@ class EliminarProductoListaActivity : AppCompatActivity() {
         binding.btnEliminar.isEnabled = false
         binding.btnEliminar.setOnClickListener {
             eliminarProductosSeleccionados(idLista)
+            initRecyclerView(idLista)
         }
     }
 
