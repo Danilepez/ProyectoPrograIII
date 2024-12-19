@@ -29,6 +29,7 @@ tools:context=".ListasActivity">
     android:layout_height="0dp"
     android:clipToPadding="false"
     android:padding="16dp"
+    style="@style/Ese"
     app:layout_constraintTop_toBottomOf="@id/titulo"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"

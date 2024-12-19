@@ -24,21 +24,22 @@
             android:id="@+id/titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/vencen_pronto"
+            style="@style/Ese"
+            android:text="Vencen Pronto"
             android:textSize="30sp"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
             android:layout_marginStart="25dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            style="@style/Ese" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewVencenPronto"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            style="@style/Ese"
             app:layout_constraintTop_toBottomOf="@id/titulo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -62,20 +63,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/vencidos"
+            style="@style/Ese"
             android:textSize="30sp"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
             android:layout_marginStart="25dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            style="@style/Ese" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewVencidos"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            style="@style/Ese"
             app:layout_constraintTop_toBottomOf="@id/titulo2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

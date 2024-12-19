@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aaa.adapters.Recycler.App.ListaViewHolder.Companion.ID_LISTA
 import com.example.aaa.adapters.Recycler.App.ListaViewHolder.Companion.NOMBRE_LISTA
-import com.example.aaa.adapters.RecyclerListaEjemploAdapter
+import com.example.aaa.RecyclerListaEjemploAdapter
 import com.example.aaa.databinding.ActivityListaEjemploBinding
 import com.example.aaa.singletons.Listas
 

@@ -5,13 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/images"
     tools:context=".CrearContenedorActivity">
 
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="96dp"
         android:layout_height="73dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/cardview_shadow_end_color"
         android:contentDescription="@string/back"
         android:scaleType="centerCrop"
         android:layout_marginTop="15dp"
@@ -88,6 +89,9 @@
         android:layout_height="wrap_content"
         android:text="@string/siguiente"
         android:textSize="16sp"
+        android:backgroundTint="@color/cardview_shadow_start_color"
+        style="@style/Ese"
+        android:textColor="#FFFF"
         app:layout_constraintTop_toBottomOf="@id/et_descripcion"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="120dp"

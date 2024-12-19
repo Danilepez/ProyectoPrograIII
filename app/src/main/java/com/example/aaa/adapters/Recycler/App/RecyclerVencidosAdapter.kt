@@ -6,8 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aaa.databinding.ItemProductoBinding
 import com.example.aaa.dataclasses.Producto
-import java.text.SimpleDateFormat
-import java.util.*
 
 class RecyclerVencidosAdapter :
     RecyclerView.Adapter<RecyclerVencidosAdapter.ProductoViewHolder>() {
@@ -31,12 +29,8 @@ class RecyclerVencidosAdapter :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: Producto) {
-            binding.tvNombre.text = data.nombre
-
-            // Formatear la fecha
-            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            val formattedDate = dateFormat.format(data.fechaVencimiento)
-            binding.tvFecha.text = formattedDate
+            binding.tvNombre.text = data.nombre // Solo asignamos el nombre aquí
+            // No asignamos ni cantidad ni estado
         }
     }
 
@@ -46,4 +40,3 @@ class RecyclerVencidosAdapter :
         notifyDataSetChanged()
     }
 }
-
