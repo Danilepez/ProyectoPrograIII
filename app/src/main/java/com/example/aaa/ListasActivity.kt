@@ -1,13 +1,11 @@
 package com.example.aaa
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aaa.adapters.RecyclerListasAdapter
 import com.example.aaa.databinding.ActivityListasBinding
 import com.example.aaa.singletons.Listas
-import com.example.aaa.dataclasses.Lista
 
 class ListasActivity : AppCompatActivity() {
 
@@ -30,6 +28,8 @@ class ListasActivity : AppCompatActivity() {
         binding.titulo.text = "Listas"
 
         binding.btnPlus.setOnClickListener {
+            // Lógica para agregar una nueva lista
+            //agregarLista()
         }
 
         binding.btnMinus.setOnClickListener {

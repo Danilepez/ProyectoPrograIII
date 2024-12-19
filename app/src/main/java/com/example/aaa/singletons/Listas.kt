@@ -3,6 +3,8 @@ package com.example.aaa.singletons
 import com.example.aaa.R
 import com.example.aaa.dataclasses.Lista
 import com.example.aaa.dataclasses.Producto
+import java.text.SimpleDateFormat
+import java.util.*
 
 object Listas {
     var listas = mutableListOf(
@@ -12,7 +14,7 @@ object Listas {
             listaProductos = mutableListOf(
                 Producto(
                     nombre = "Leche",
-                    fechaVencimiento = "01/08/2024",
+                    fechaVencimiento = SimpleDateFormat("dd/MM/yyyy").parse("01/08/2024") ?: Date(),
                     estado = "Fresco",
                     lista = "Lácteos",
                     cantidad = 2,
@@ -20,7 +22,7 @@ object Listas {
                 ),
                 Producto(
                     nombre = "Pan",
-                    fechaVencimiento = "03/06/2024",
+                    fechaVencimiento = SimpleDateFormat("dd/MM/yyyy").parse("03/06/2024") ?: Date(),
                     estado = "Seco",
                     lista = "Panadería",
                     cantidad = 1,
@@ -28,7 +30,7 @@ object Listas {
                 ),
                 Producto(
                     nombre = "Manzanas",
-                    fechaVencimiento = "10/06/2024",
+                    fechaVencimiento = SimpleDateFormat("dd/MM/yyyy").parse("10/06/2024") ?: Date(),
                     estado = "Fresco",
                     lista = "Frutas",
                     cantidad = 5,
@@ -42,7 +44,7 @@ object Listas {
             listaProductos = mutableListOf(
                 Producto(
                     nombre = "Arroz",
-                    fechaVencimiento = "20/12/2024",
+                    fechaVencimiento = SimpleDateFormat("dd/MM/yyyy").parse("20/12/2024") ?: Date(),
                     estado = "Seco",
                     lista = "Cereales",
                     cantidad = 3,
@@ -61,7 +63,7 @@ object Listas {
             listaProductos = mutableListOf(
                 Producto(
                     nombre = "Yogurt",
-                    fechaVencimiento = "15/06/2024",
+                    fechaVencimiento = SimpleDateFormat("dd/MM/yyyy").parse("15/06/2024") ?: Date(),
                     estado = "Fresco",
                     lista = "Lácteos",
                     cantidad = 6,
@@ -75,7 +77,7 @@ object Listas {
             listaProductos = mutableListOf(
                 Producto(
                     nombre = "Pollo",
-                    fechaVencimiento = "08/06/2024",
+                    fechaVencimiento = SimpleDateFormat("dd/MM/yyyy").parse("08/06/2024") ?: Date(),
                     estado = "Congelado",
                     lista = "Carnes",
                     cantidad = 2,
@@ -89,4 +91,5 @@ object Listas {
         return listas.find { it.nombre == nombre }
     }
 }
+
 

@@ -24,7 +24,11 @@ class ContenedorActivity : AppCompatActivity() {
         recyclerContenedorAdapter = RecyclerContenedorAdapter(ProductosContenedor.productosContenedor)
         initRecyclerView()
 
-
+        binding.btnBack.setOnClickListener {
+            val intent = Intent(this, PantallaPrincipalActivity::class.java)
+            startActivity(intent)
+            finish() // Opcional, para cerrar esta actividad y evitar que el usuario regrese a esta al presionar atrás
+        }
         // Configurar botones
         binding.btnCompactView.setOnClickListener {
             if (showDetails) {
