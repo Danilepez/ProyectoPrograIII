@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aaa.adapters.Recycler.App.ListaViewHolder.Companion.ID_LISTA
 import com.example.aaa.adapters.Recycler.App.ListaViewHolder.Companion.NOMBRE_LISTA
-import com.example.aaa.adapters.RecyclerListaEjemploAdapter
 import com.example.aaa.databinding.ActivityListaEjemploBinding
 import com.example.aaa.singletons.Listas
 
@@ -24,10 +23,6 @@ class ListaEjemploActivity : AppCompatActivity() {
 
         initRecyclerView()
 
-        //cargarListaDesdeIntent()
-
-
-        //binding.titulo.text = nameLista.toString()
 
         binding.btnModificar.setOnClickListener {
             val intentToEdit = Intent(this, EditarListasActivity::class.java)
@@ -45,6 +40,7 @@ class ListaEjemploActivity : AppCompatActivity() {
         }
         binding.btnCheck.setOnClickListener {
         }
+        binding.btnCombi
     }
 
     private fun initRecyclerView() {
@@ -78,3 +74,25 @@ class ListaEjemploActivity : AppCompatActivity() {
         }
     }*/
 }
+
+
+
+
+/*private fun setupRecyclerView(productos: List<Producto>) {
+    binding.recyclerViewProductos.adapter = RecyclerListaEjemploAdapter(productos)
+}*/
+
+    /*private fun cargarListaDesdeIntent() {
+        val listaNombre = this.intent.getStringExtra(NOMBRE_LISTA)  // Obtener el nombre de la lista desde el Intent
+        val lista = Listas.getListaByName(listaNombre ?: "")// Buscar la lista en el Singleton
+
+        if (lista != null) {
+            if (lista.listaProductos.isNotEmpty()) {
+                if (lista != null) {
+                    setupRecyclerView(lista.listaProductos)
+                }
+            } else {
+                Toast.makeText(this, "Lista no encontrada o está vacía", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }*/

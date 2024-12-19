@@ -1,4 +1,4 @@
-package com.example.aaa.adapters
+package com.example.aaa
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

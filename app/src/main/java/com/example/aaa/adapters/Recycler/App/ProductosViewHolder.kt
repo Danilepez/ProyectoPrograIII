@@ -8,20 +8,18 @@ import com.example.aaa.dataclasses.Producto
 
 class ProductosViewHolder (view: View): RecyclerView.ViewHolder(view) {
 
-    private var showDetails: Boolean = false // Controla la visibilidad de los detalles
+    private var showDetails: Boolean = false
     val binding = ItemProductoBinding.bind(view)
 
     fun render(productoModel: Producto, showDetails: Boolean) {
         binding.tvNombre.text = productoModel.nombre
 
-        // Mostrar u ocultar los detalles según el estado de showDetails
         if (showDetails) {
             binding.tvLista.visibility = View.VISIBLE
             binding.tvFecha.visibility = View.VISIBLE
             binding.tvCantidad.visibility = View.VISIBLE
             binding.tvEstado.visibility = View.VISIBLE
 
-            // Usar recursos de cadenas con marcadores de posición
             binding.tvLista.text =
                 binding.tvFecha.context?.getString(R.string.product_list, productoModel.lista)
             binding.tvFecha.text =
