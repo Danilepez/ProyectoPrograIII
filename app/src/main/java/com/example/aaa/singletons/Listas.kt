@@ -18,7 +18,7 @@ object Listas {
                     estado = "Fresco",
                     lista = "Lácteos",
                     cantidad = 2,
-                    imagen = R.drawable.pantalla_1
+                    imagen = R.drawable.carrito
                 ),
                 Producto(
                     nombre = "Pan",
@@ -26,7 +26,7 @@ object Listas {
                     estado = "Seco",
                     lista = "Panadería",
                     cantidad = 1,
-                    imagen = R.drawable.pantalla_1
+                    imagen = R.drawable.carrito
                 ),
                 Producto(
                     nombre = "Manzanas",
@@ -34,7 +34,7 @@ object Listas {
                     estado = "Fresco",
                     lista = "Frutas",
                     cantidad = 5,
-                    imagen = R.drawable.pantalla_1
+                    imagen = R.drawable.carrito
                 )
             )
         ),
@@ -48,7 +48,7 @@ object Listas {
                     estado = "Seco",
                     lista = "Cereales",
                     cantidad = 3,
-                    imagen = R.drawable.pantalla_1
+                    imagen = R.drawable.carrito
                 )
             )
         ),
@@ -67,7 +67,7 @@ object Listas {
                     estado = "Fresco",
                     lista = "Lácteos",
                     cantidad = 6,
-                    imagen = R.drawable.pantalla_1
+                    imagen = R.drawable.carrito
                 )
             )
         ),
@@ -81,7 +81,7 @@ object Listas {
                     estado = "Congelado",
                     lista = "Carnes",
                     cantidad = 2,
-                    imagen = R.drawable.pantalla_1
+                    imagen = R.drawable.carrito
                 )
             )
         )
